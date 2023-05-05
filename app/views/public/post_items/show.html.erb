@@ -1,0 +1,32 @@
+<div>
+  <h4>商品画像</h4>
+  <%= image_tag @post_item.get_image, size: "200x200" %>
+</div>
+<div>
+  <h4>商品名</h4>
+  <%= @post_item.name %>
+</div>
+<div>
+  <h4>商品カテゴリー</h4>
+  <%= @post_item.category %>
+</div>
+<div>
+  <h4>価格</h4>
+  <%= @post_item.price %>
+</div>
+<div>
+  <h4>説明</h4>
+  <%= @post_item.explanation %>
+</div>
+<div>
+  <h4>使用してみた感想</h4>
+  <%= @post_item.thoughts %>
+</div>
+<div>
+  <h4>おすすめポイント</h4>
+  <%= @post_item.recommend_point %>
+</div>
+
+<% if  @post_item.customer == current_customer %>
+  <%= link_to 'Destroy', @post_item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+<% end %>

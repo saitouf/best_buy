@@ -1,0 +1,24 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @post_items.each do |post_item| %>
+      <tr>
+        <td>
+          <!--%= image_tag book.user.get_profile_image, size:'50x50' %-->
+        </td>
+        <td>
+          <%= link_to post_item_path(post_item) do %>
+          <%= post_item.name %>
+          <% end %> 
+          </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
