@@ -1,0 +1,22 @@
+<table>
+  <tbody>
+    <% post_item.post_comments.each do |post_comment| %>
+    <tr>
+      <td>
+        <%= link_to customer_path(post_comment.customer) do %>
+          <%= image_tag post_comment.customer.get_profile_image, size: "100x100" %><br>
+          <%= post_comment.customer.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= post_comment.comment %>
+      </td>
+      <td>
+        <% if post_comment.customer == current_customer %>
+          <%= link_to "Destroy", post_item_post_comment_path(post_item, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
