@@ -17,6 +17,19 @@ class Public::PostItemsController < ApplicationController
   def show
     @post_item = PostItem.find(params[:id])
   end
+  
+  def edit
+    @post_item = PostItem.find(params[:id])
+  end
+  
+  def update
+    @post_item = PostItem.find(params[:id])
+    if @post_item.update(post_item_params)
+      redirect_to post_item_path(@post_item), notice: "You have updated post successfully."
+    else
+      render "edit"
+    end
+  end
 
   def destroy
     @post_item = PostItem.find(params[:id])
