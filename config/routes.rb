@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root :to => "homes#top"
     resources :post_items, only: [:new, :create, :index, :show, :destroy, :edit, :update]
+    resources :customers, only: [:show,:edit,:update]
   end
 
   # 管理者用

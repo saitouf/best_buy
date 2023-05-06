@@ -9,6 +9,9 @@
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
           <li>
+            <%= link_to 'マイページ', customer_path(current_customer.id) %>  
+          </li>
+          <li>
             <%= link_to '投稿フォーム', new_post_item_path %>
           </li>
           <li>
