@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     root :to => "homes#top"
     resources :post_items, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
       resources :post_comments, only: [:create, :destroy]
+      resource :favorites, only: [:create, :destroy]
     end
     resources :customers, only: [:show,:edit,:update]
   end

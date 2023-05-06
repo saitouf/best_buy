@@ -26,6 +26,9 @@
   <h4>おすすめポイント</h4>
   <%= @post_item.recommend_point %>
 </div>
+<div>
+  <%= render 'public/favorites/btn', post_item: @post_item %>
+</div>
 
 <% if @post_item.customer == current_customer %>
   <%= link_to 'Edit', edit_post_item_path(@post_item), class: "btn btn-sm btn-success" %>
