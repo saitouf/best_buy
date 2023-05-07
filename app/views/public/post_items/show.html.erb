@@ -26,6 +26,14 @@
   <h4>おすすめポイント</h4>
   <%= @post_item.recommend_point %>
 </div>
+
+<div>
+  <h4>ジャンル</h4>
+  <% @post_item.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+  <% end %>
+</div>
+
 <div>
   <%= render 'public/favorites/btn', post_item: @post_item %>
 </div>

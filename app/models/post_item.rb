@@ -5,6 +5,8 @@ class PostItem < ApplicationRecord
   belongs_to :customer
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :post_tag_relations, dependent: :destroy
+  has_many :tags, through: :post_tag_relations, dependent: :destroy
   
   # 投稿画像の有無を確認
   def get_image
