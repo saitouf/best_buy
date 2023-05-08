@@ -17,15 +17,15 @@
             <div class="group-list">
                 <ul class="group-list-table">
                     <% @groups.each do |list| %>
+                    <%= link_to "/groups/#{list.id}" do %>
                     <%= image_tag list.get_image, size: '50x50' %>
                     <%= list.name %>(<%= list.customer_ids.count %>)
+                    <% end %>
                         <% if list.is_owned_by?(current_customer) %>
-                            <li class="group-list-table-each-group">
-                                <%= link_to "/groups/#{list.id}" do %>
-                                    <%= link_to '編集', edit_group_path(list.id), method: :get %>
-                                    <%= link_to '削除', "/groups/#{list.id}", method: :delete %>
-                                <% end %>
-                            </li>
+                          <li class="group-list-table-each-group">
+                            <%= link_to '編集', edit_group_path(list.id), method: :get %>
+                            <%= link_to '削除', "/groups/#{list.id}", method: :delete %>
+                          </li>
                         <% end %>
                     <% end %>
                 </ul>
