@@ -8,6 +8,8 @@ class Customer < ApplicationRecord
   has_many :post_items, dependent: :destroy
   has_many :post_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :group_users, dependent: :destroy
+  has_many :groups, through: :group_users, dependent: :destroy
 
   # プロフィール画像有無確認
   def get_profile_image

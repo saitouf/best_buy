@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       resource :favorites, only: [:create, :destroy]
     end
     resources :customers, only: [:show,:edit,:update]
+    resources :groups, only: [:index, :new, :create, :show, :edit, :update, :destroy]
   end
 
   # 管理者用
