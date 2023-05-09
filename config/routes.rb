@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  # Actioncable
+  mount ActionCable.server => '/cable'
 
   # ゲストログイン用
   devise_scope :customer do
@@ -19,6 +22,10 @@ Rails.application.routes.draw do
     end
     resources :customers, only: [:show,:edit,:update]
     resources :groups, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    # 退会確認画面
+    get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    # 論理削除用のルーティング
+    patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
   end
 
   # 管理者用

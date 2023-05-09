@@ -1,13 +1,18 @@
 <div class="group-show">
-    <div class="show-group-chat-back">
-        <span class="group-show-group-chat-back">
-            <%= link_to groups_path do %>
+  <div class="show-group-chat-back">
+    <span class="group-show-group-chat-back">
+      <%= link_to groups_path do %>
                 ＜
-            <% end %>
-        </span>
-    </div>
+      <% end %>
+    </span>
+  </div>
+<div id='messages' data-room_id="<%= @group.id %>">
+  <h1>Chat room</h1>
+  <%= render @messages %>
+</div>
 
-    <div class="chat-group-show-talk">
-        トーク
-    </div>
+<form>
+  <%= label_tag :content, 'Say something:' %>
+  <input type="text" data-behavior="room_speaker">
+</form>
 </div>
