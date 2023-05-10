@@ -3,6 +3,54 @@
     <div class='col-md-3'>
       <h2>User info</h2>
       <%= render 'info', customer: @customer %>
+   
+      <div>
+        <h4>商品画像</h4>
+        <%= image_tag @post_item.get_image, size: "100x100" %>
+      </div>
+      <div>
+        <h4>商品名</h4>
+        <%= @post_item.name %>
+      </div>
+      <div>
+        <h4>商品カテゴリー</h4>
+        <%= @post_item.category %>
+      </div>
+      <div>
+        <h4>価格</h4>
+        <%= @post_item.price %>
+      </div>
+      <div>
+        <h4>説明</h4>
+        <%= @post_item.explanation %>
+      </div>
+      <div>
+        <h4>使用してみた感想</h4>
+        <%= @post_item.thoughts %>
+      </div>
+      <div>
+        <h4>おすすめポイント</h4>
+        <%= @post_item.recommend_point %>
+      </div>
+      
+      <div>
+        <h4>ジャンル</h4>
+        <% @post_item.tags.each do |tag| %>
+          <span><%= tag.name %></span>
+        <% end %>
+      </div>
+      
+      <div>
+        <%= render 'public/favorites/btn', post_item: @post_item %>
+      </div>
+      
+      <% if @post_item.customer == current_customer %>
+        <%= link_to 'Edit', edit_post_item_path(@post_item), class: "btn btn-sm btn-success" %>
+        <%= link_to 'Destroy', @post_item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
+      <% end %>
+      
+      <%= render 'public/post_comments/index', post_item: @post_item %>
+      <%= render 'public/post_comments/form', post_item: @post_item, post_comment: @post_comment %>
     </div>
   </div>
 </div>

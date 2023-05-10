@@ -10,7 +10,7 @@ class Customer < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy
-  # has_many :messages, dependent: :destroy
+  has_many :messages, dependent: :destroy
 
   # プロフィール画像有無確認
   def get_profile_image

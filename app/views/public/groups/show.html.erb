@@ -6,13 +6,13 @@
       <% end %>
     </span>
   </div>
-<div id='messages' data-room_id="<%= @group.id %>">
   <h1>Chat room</h1>
-  <%= render @messages %>
-</div>
+  <div id='messages' data-room_id="<%= @group.id %>">
+    <%= render @messages %>
+  </div>
 
-<form>
-  <%= label_tag :content, 'Say something:' %>
-  <input type="text" data-behavior="room_speaker">
-</form>
+  <form>
+    <%= label_tag :content, 'Say something:' %>
+    <input type="text" data-behavior="room_speaker">
+  </form>
 </div>

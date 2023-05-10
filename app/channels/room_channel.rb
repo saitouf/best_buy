@@ -1,6 +1,7 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "room_channel"
+    # room_channel.rbとroom_channel.jsでデータの送受信ができるようになる。
+    stream_from "room_channel_#{params['group']}" 
   end
 
   def unsubscribed
@@ -8,6 +9,7 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    Message.create! content: data['message']
+    # jsで実行されたspeakのmessageを受け取り、room_channelのreceivedにブロードキャストする
+    Message.create! content: data['message'], customer_id: current_customer.id, group_id: params['group']
   end
 end

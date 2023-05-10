@@ -3,7 +3,7 @@ class Group < ApplicationRecord
 
   has_many :group_users, dependent: :destroy
   has_many :customers, through: :group_users, dependent: :destroy
-  # has_many :messages, dependent: :destroy
+  has_many :messages, dependent: :destroy
   
   # グループ作成者情報管理
   def is_owned_by?(customer)

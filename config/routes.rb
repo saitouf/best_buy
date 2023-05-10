@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  # Actioncable
+  # Actioncableの有効
   mount ActionCable.server => '/cable'
 
   # ゲストログイン用
