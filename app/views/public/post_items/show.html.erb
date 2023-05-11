@@ -45,5 +45,9 @@
   <%= link_to 'Destroy', @post_item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
 <% end %>
 
-<%= render 'public/post_comments/index', post_item: @post_item %>
-<%= render 'public/post_comments/form', post_item: @post_item, post_comment: @post_comment %>
+<div class="new-comment">
+  <%= render 'public/post_comments/index', post_item: @post_item %>
+</div>
+<div id="comments_area">
+  <%= render 'public/post_comments/form', post_item: @post_item, post_comment: @post_comment %>
+</div>

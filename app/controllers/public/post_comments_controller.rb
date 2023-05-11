@@ -5,12 +5,12 @@ class Public::PostCommentsController < ApplicationController
     comment = current_customer.post_comments.new(post_comment_params)
     comment.post_item_id = post_item.id
     comment.save
-    redirect_to request.referer
+    redirect_to request.referer,  notice: 'コメントを投稿しました'
   end
   
   def destroy
     PostComment.find(params[:id]).destroy
-    redirect_to request.referer
+    redirect_to request.referer,  notice: 'コメントを削除しました'
   end
   
   private
