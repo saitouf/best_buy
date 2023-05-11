@@ -27,8 +27,11 @@ class Public::PostItemsController < ApplicationController
   end
 
   def show
-    @post_item = PostItem.find(params[:id])
     @post_comment = PostComment.new
+    @post_item = PostItem.find(params[:id])
+    unless ViewCount.find_by(customer_id: current_customer.id, post_item_id: @post_item.id)
+      current_customer.view_counts.create(post_item_id: @post_item.id)
+    end
   end
 
   def edit

@@ -7,6 +7,7 @@ class PostItem < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :post_tag_relations, dependent: :destroy
   has_many :tags, through: :post_tag_relations, dependent: :destroy
+  has_many :view_counts, dependent: :destroy
   
   # 投稿画像の有無を確認
   def get_image

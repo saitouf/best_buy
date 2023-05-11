@@ -33,7 +33,9 @@
     <span><%= tag.name %></span>
   <% end %>
 </div>
-
+<div>
+  閲覧数: <%= @post_item.view_counts.count %>
+</div>
 <div>
   <%= render 'public/favorites/btn', post_item: @post_item %>
 </div>

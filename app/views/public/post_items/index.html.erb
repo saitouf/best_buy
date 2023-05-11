@@ -18,6 +18,9 @@
           <%= post_item.name %>
           <% end %> 
           </td>
+          <td>
+          <p class="view-count">閲覧数: <%= post_item.view_counts.count %></p>
+          </td>
       </tr>
     <% end %>
   </tbody>
