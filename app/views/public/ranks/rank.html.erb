@@ -1,0 +1,18 @@
+<table class='table table-hover table-inverse'>
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @post_favorite_ranks.each.with_index(1) do |post, i| %>
+    <tr>
+      <td>第<%= i %>位</td>
+      <td><%= post.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

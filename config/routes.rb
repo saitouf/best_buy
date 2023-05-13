@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     # 論理削除用のルーティング
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
+    # ランキングのルーティング
+    get '/rank' => 'ranks#rank', as: 'rank'
   end
 
   # 管理者用
