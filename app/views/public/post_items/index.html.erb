@@ -1,4 +1,9 @@
 <table class='table table-hover table-inverse'>
+  <p>
+    <%= link_to '新しい順', post_items_path(latest: "true") %>
+      |<%= link_to '古い順', post_items_path(old: "true") %>
+      |<%= link_to 'コメントの高い順', post_items_path(comment_count: "true") %>
+  </p>
   <thead>
     <tr>
       <th></th>
@@ -16,13 +21,14 @@
         <td>
           <%= link_to post_item_path(post_item) do %>
           <%= post_item.name %>
-          <% end %> 
+          <% end %>
           </td>
           <td>いいね数: <%= post_item.favorites.count %></td>
           <td>コメント数: <%= post_item.post_comments.count %></td>
           <td>
           <p class="view-count">閲覧数: <%= post_item.view_counts.count %></p>
           </td>
+          <td><p>投稿日時：<%= l post_item.created_at %></p></td>
       </tr>
     <% end %>
   </tbody>

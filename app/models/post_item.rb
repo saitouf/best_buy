@@ -9,6 +9,10 @@ class PostItem < ApplicationRecord
   has_many :tags, through: :post_tag_relations, dependent: :destroy
   has_many :view_counts, dependent: :destroy
   
+  scope :latest, -> {order(created_at: :desc)}
+  scope :old, -> {order(created_at: :asc)}
+  scope :comment_count, -> {order(comment: :desc)}
+  
   # 投稿画像の有無を確認
   def get_image
     unless image.attached?

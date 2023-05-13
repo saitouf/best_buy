@@ -11,7 +11,15 @@ class Public::PostItemsController < ApplicationController
   end
 
   def index
-    @post_items = PostItem.all
+    if params[:latest]
+      @post_items = PostItem.latest
+    elsif params[:old]
+      @post_items = PostItem.old
+    elsif params[:comment_count]
+      @post_items = PostItem.comment_count
+    else
+      @post_items = PostItem.all
+    end
     @tags = Tag.all
     post_ids = []
 
