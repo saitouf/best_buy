@@ -28,6 +28,8 @@ Rails.application.routes.draw do
     patch '/customers/:id/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
     # ランキングのルーティング
     get '/rank' => 'ranks#rank', as: 'rank'
+    # 検索機能のルーティング
+    get '/search' => 'post_items#search', as: 'search'
   end
 
   # 管理者用

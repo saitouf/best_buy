@@ -26,4 +26,9 @@ class PostItem < ApplicationRecord
   def favorited_by?(customer)
     favorites.exists?(customer_id: customer.id)
   end
+  
+  # 検索情報の取得
+  def self.search(keyword)
+    where(["name like? OR price like?", "%#{keyword}%", "%#{keyword}%"])
+  end
 end

@@ -4,6 +4,14 @@
       |<%= link_to '古い順', post_items_path(old: "true") %>
       |<%= link_to 'コメントの高い順', post_items_path(comment_count: "true") %>
   </p>
+  
+  <div class="search-form">
+    <%= form_with url: search_path, method: :get, local: true do |f| %>
+      <%= f.text_field :keyword, value: @keyword %>
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+  
   <thead>
     <tr>
       <th></th>
@@ -35,7 +43,6 @@
 </table>
 
 <%= form_tag({controller:"post_items",action:"index"}, method: :get) do %>
-    <%= text_field :name, class: "hogehoge" %>
     <% Tag.all.each do |t| %>
         <li><%= check_box :tag_ids, t.name %><%= t.name %></li>
     <% end %>
