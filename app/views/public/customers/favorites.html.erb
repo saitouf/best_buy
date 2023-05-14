@@ -1,0 +1,28 @@
+<table class='table table-hover table-inverse'>
+<h4>いいね一覧</h4>
+
+  <thead>
+    <tr>
+      <th></th>
+      <th>Title</th>
+      <th>Opinion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <tr>
+    <% @favorites_posts.each do |post_item| %>
+      <td>
+    	  <%= link_to post_item_path(post_item) do %>
+         <%= post_item.name %>
+         <% end %>
+      </td>
+      <td>いいね数: <%= post_item.favorites.count %></td>
+      <td>コメント数: <%= post_item.post_comments.count %></td>
+      <td><p class="view-count">閲覧数: <%= post_item.view_counts.count %></p></td>
+      <td><p>投稿日時：<%= l post_item.created_at %></p></td>
+	  </tr>
+    <% end %>
+  </tbody>
+</table>

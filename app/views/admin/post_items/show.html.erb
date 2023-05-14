@@ -1,0 +1,57 @@
+<div>
+  <h4>商品画像</h4>
+  <%= image_tag @post_item.get_image, size: "200x200" %>
+</div>
+<div>
+  <h4>商品名</h4>
+  <%= @post_item.name %>
+</div>
+<div>
+  <h4>商品カテゴリー</h4>
+  <%= @post_item.category %>
+</div>
+<div>
+  <h4>価格</h4>
+  <%= @post_item.price %>
+</div>
+<div>
+  <h4>説明</h4>
+  <%= @post_item.explanation %>
+</div>
+<div>
+  <h4>使用してみた感想</h4>
+  <%= @post_item.thoughts %>
+</div>
+<div>
+  <h4>おすすめポイント</h4>
+  <%= @post_item.recommend_point %>
+</div>
+
+<div>
+  <h4>ジャンル</h4>
+  <% @post_item.tags.each do |tag| %>
+    <span><%= tag.name %></span>
+  <% end %>
+</div>
+
+<table>
+  <tbody>
+    <p>コメント件数：<%= @post_item.post_comments.count %></p>
+    <% @post_item.post_comments.each do |post_comment| %>
+    <tr>
+      <td>
+        <%= link_to customer_path(post_comment.customer) do %>
+          <%= image_tag post_comment.customer.get_profile_image, size: "100x100" %><br>
+          <%= post_comment.customer.name %>
+        <% end %>
+      </td>
+      <td>
+        <%= post_comment.comment %>
+      </td>
+      <td>
+        <%= link_to "Destroy", admin_post_item_post_comment_path(@post_item, post_comment), method: :delete, class: "btn btn-danger pull-right" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

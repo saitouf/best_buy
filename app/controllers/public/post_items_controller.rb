@@ -20,17 +20,12 @@ class Public::PostItemsController < ApplicationController
     else
       @post_items = PostItem.all
     end
-    @tags = Tag.all
-    post_ids = []
 
-    @post_items.where!("name LIKE ? ",'%' + params[:name] + '%') if params[:search].present?
-
-    if params[:tag_ids]
-      params[:tag_ids].each do |key, value|
-        Tag.find_by(name: key).post_items.each { |p| post_ids << p.id } if value == "1"
-      end
-      post_ids.uniq!
-      @post_items.where!(id: post_ids) if post_ids.present?
+    @post_items = []
+    if params[:tag_id].present?
+      @post_items = Tag.find(params[:tag_id]).post_items
+    else
+      @post_items = PostItem.all
     end
   end
 
@@ -60,7 +55,7 @@ class Public::PostItemsController < ApplicationController
     @post_item.destroy
     redirect_to post_items_path
   end
-  
+
   def search
     @post_items = PostItem.search(params[:keyword])
     @keyword = params[:keyword]

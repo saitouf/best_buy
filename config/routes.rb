@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     get '/rank' => 'ranks#rank', as: 'rank'
     # 検索機能のルーティング
     get '/search' => 'post_items#search', as: 'search'
+     # 自身のいいね投稿確認のルーティング
+    get "/customer/favorites" => "customers#favorites", as: "favorite_index"
   end
 
   # 管理者用
@@ -40,6 +42,9 @@ Rails.application.routes.draw do
   namespace :admin do
     # root :to => "homes#top"
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :post_items, only: [:index, :show, :destroy, :edit, :update] do
+      resources :post_comments, only: [:destroy]
+    end
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

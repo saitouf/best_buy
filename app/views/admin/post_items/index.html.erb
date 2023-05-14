@@ -1,23 +1,4 @@
 <table class='table table-hover table-inverse'>
-  <p>
-    <%= link_to '新しい順', post_items_path(latest: "true") %>
-      |<%= link_to '古い順', post_items_path(old: "true") %>
-      |<%= link_to 'コメントの高い順', post_items_path(comment_count: "true") %>
-  </p>
-  
-  <div class="search-form">
-    <%= form_with url: search_path, method: :get, local: true do |f| %>
-      <%= f.text_field :keyword, value: @keyword %>
-      <%= f.submit "検索" %>
-    <% end %>
-  </div>
-  
-  <%= form_tag({controller: "post_items", action: "index"}, method: :get) do %>
-    <%= select_tag "tag_id", options_from_collection_for_select(Tag.all, "id", "name"), prompt: "ジャンルを選択してください" %>
-    <%= submit_tag '検索' %>
-  <% end %>
-
-  
   <thead>
     <tr>
       <th></th>
@@ -33,7 +14,7 @@
           <!--%= image_tag book.user.get_profile_image, size:'50x50' %-->
         </td>
         <td>
-          <%= link_to post_item_path(post_item) do %>
+          <%= link_to admin_post_item_path(post_item) do %>
           <%= post_item.name %>
           <% end %>
           </td>
@@ -47,5 +28,3 @@
     <% end %>
   </tbody>
 </table>
-
-
