@@ -1,0 +1,6 @@
+<h1>Chat room</h1>
+
+<% @messages.each do |message| %>
+<P><%= message.content %>
+   <%= link_to '削除', "//groups/#{message.id}", method: :delete %></P>
+<% end %>
