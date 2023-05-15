@@ -65,6 +65,6 @@ class Public::PostItemsController < ApplicationController
   private
 
   def post_item_params
-    params.require(:post_item).permit(:name, :image, :category, :price, :explanation, :thoughts, :recommend_point, tag_ids: [])
+    params.require(:post_item).permit(:name, :image, :price, :explanation, :thoughts, :recommend_point, tag_ids: [])
   end
 end
