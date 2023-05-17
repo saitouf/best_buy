@@ -17,12 +17,7 @@ class Public::PostItemsController < ApplicationController
       @post_items = PostItem.old
     elsif params[:comment_count]
       @post_items = PostItem.comment_count
-    else
-      @post_items = PostItem.all
-    end
-
-    @post_items = []
-    if params[:tag_id].present?
+    elsif params[:tag_id].present?
       @post_items = Tag.find(params[:tag_id]).post_items
     else
       @post_items = PostItem.all

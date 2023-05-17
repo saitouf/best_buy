@@ -2,7 +2,7 @@ class Group < ApplicationRecord
   has_one_attached :image
 
   has_many :group_users, dependent: :destroy
-  has_many :customers, through: :group_users, dependent: :destroy, source: :user
+  has_many :customers, through: :group_users, dependent: :destroy
   has_many :messages, dependent: :destroy
   
   # グループ作成者情報管理

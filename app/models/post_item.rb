@@ -9,6 +9,7 @@ class PostItem < ApplicationRecord
   has_many :tags, through: :post_tag_relations, dependent: :destroy
   has_many :view_counts, dependent: :destroy
   
+  # 投稿新、旧、コメント数並び替えソート
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :comment_count, -> {order(comment: :desc)}

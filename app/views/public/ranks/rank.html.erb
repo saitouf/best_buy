@@ -2,26 +2,25 @@
  |<%= link_to 'いいね週', rank_path(favorite_weekcount: "true") %>
  |<%= link_to 'いいね月', rank_path(favorite_monthcount: "true") %>
  
-<table class='table table-hover table-inverse'>
-  <h4>いいね数ランキング</h4>
-  <thead>
-    <tr>
-      <th></th>
-      <th>Title</th>
-      <th>Opinion</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-  <% @post_favorite_ranks.each.with_index(1) do |post, i| %>
-    <tr>
-      <td>第<%= i %>位</td>
-      <td><%= post.name %></td>
-      <td><%= post.name %></td>
-      <td><i class="fas fa-heart"></i> <%= post.favorites.count %>いいね</td>
-      <td><%= l post.created_at %></td>
-      
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+
+  <div class="container">
+  <div class="row">
+    <% @post_favorite_ranks.each.with_index(1) do |post, i| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <%= image_tag post.get_image, class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title">第<%= i %>位</h5>
+            <h6 class="card-subtitle mb-2 text-muted"><%= post.name %></h6>
+            <p class="card-text">
+              <%= post.name %>
+              <i class="fas fa-heart"></i> <%= post.favorites.count %>いいね
+              <%= l post.created_at %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+  

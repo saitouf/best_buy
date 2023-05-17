@@ -1,4 +1,4 @@
-<div class="chat-group">
+
   <h1>チャットグループ一覧</h1>
     <div class="group-search">
       <div class="group-search-form">
@@ -10,29 +10,35 @@
       <div class="group-new">
         <%= link_to 'グループ作成', new_group_path %>
       </div>
-
-    <% if @groups == [] %>
-      <%= @group_none %>
-    <% else %>
-    <div class="group-list">
-      <ul class="group-list-table">
-        <% @groups.each do |list| %>
-        <%= link_to "/groups/#{list.id}" do %>
-          <%= image_tag list.get_image, size: '50x50' %>
-          <%= list.name %>
+      
+    
+        <% if @groups == [] %>
+          <%= @group_none %>
+        <% else %>
+          <div class="card-deck mx-auto">
+            <div class="images">
+         <% @groups.each do |list| %>
+           <div class="card mb-3">
+           <%= link_to "/groups/#{list.id}", class: "text-decoration-none" do %>
+          <%= image_tag list.get_image, size: '200x200', class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= list.name %></h5>
+          </div>
+          <% end %>
+          <% if list.is_owned_by?(current_customer) %>
+          <div class="card-footer">
+            <%= link_to '編集', edit_group_path(list.id), method: :get, class: "btn btn-primary mr-2" %>
+            <%= link_to '削除', "/groups/#{list.id}", method: :delete, class: "btn btn-danger" %>
+          </div>
         <% end %>
-        <% if list.is_owned_by?(current_customer) %>
-        <li class="group-list-table-each-group">
-          <%= link_to '編集', edit_group_path(list.id), method: :get %>
-          <%= link_to '削除', "/groups/#{list.id}", method: :delete %>
-        </li>
-        <% end %>
-      <% end %>
-      </ul>
-    </div>
+      </div>
     <% end %>
-
     </div>
+  </div>
+<% end %>
+   
+   
+   
     <div class="user-page">
         <%= link_to 'ユーザーページへ', current_customer %>
     </div>
