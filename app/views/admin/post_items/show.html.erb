@@ -1,3 +1,4 @@
+<div class="container">
 <div>
   <h4>商品画像</h4>
   <%= image_tag @post_item.get_image, size: "200x200" %>
@@ -5,10 +6,6 @@
 <div>
   <h4>商品名</h4>
   <%= @post_item.name %>
-</div>
-<div>
-  <h4>商品カテゴリー</h4>
-  <%= @post_item.category %>
 </div>
 <div>
   <h4>価格</h4>
@@ -55,3 +52,4 @@
     <% end %>
   </tbody>
 </table>
+</div>

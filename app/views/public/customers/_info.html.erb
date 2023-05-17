@@ -1,11 +1,11 @@
-<table class='table'>
-  <tr><%= image_tag customer.get_profile_image, size:'100x100' %></tr>
-  <tr>
-	  <th>名前</th>
+<div class="row justify-content-center mb-4">
+<%= image_tag customer.get_profile_image, size:'200x200' %>
+</div>
+<table class='table mx-auto'>
+  <tr class="align-middle text-center">
 	  <th><%= customer.name %></th>
   </tr>
-  <tr>
-	  <th>自己</th>
+  <tr class="align-middle text-center">
 	  <th><%= customer.introduction %></th>
   </tr>
 </table>

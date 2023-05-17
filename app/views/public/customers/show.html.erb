@@ -1,55 +1,28 @@
-<div class='container px-5 px-sm-0'>
-  <div class='row'>
-    <div class='col-md-3'>
-      
-      <%= link_to "いいねした投稿", favorite_index_path(@customer) %>
-      
-      <h2>User info</h2>
+<%= link_to "いいねした投稿", favorite_index_path(@customer) %>
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
       <%= render 'info', customer: @customer %>
-   
-      <div>
-        <h4>商品画像</h4>
-        <%= image_tag @post_item.get_image, size: "100x100" %>
-      </div>
-      <div>
-        <h4>商品名</h4>
-        <%= @post_item.name %>
-      </div>
-      <div>
-        <h4>価格</h4>
-        <%= @post_item.price %>
-      </div>
-      <div>
-        <h4>説明</h4>
-        <%= @post_item.explanation %>
-      </div>
-      <div>
-        <h4>使用してみた感想</h4>
-        <%= @post_item.thoughts %>
-      </div>
-      <div>
-        <h4>おすすめポイント</h4>
-        <%= @post_item.recommend_point %>
-      </div>
-      
-      <div>
-        <h4>ジャンル</h4>
-        <% @post_item.tags.each do |tag| %>
-          <span><%= tag.name %></span>
+    </div>
+    <div class='col-md-8'>
+      <h2 class="mb-4 text-center">投稿記事一覧</h2>
+      <div class="images">
+        <% @post_items.each do |post_item| %>
+        <div class="dish_image text-center mx-4">
+          <div class="img">
+            <%= link_to post_item_path(post_item.id) do %>
+            <%= image_tag post_item.get_image, size: "200x200" %></div>
+            <%= post_item.name %>
+            <% end %>
+            <% if post_item.customer == current_customer %>
+            <P><%= link_to 'Edit', edit_post_item_path(post_item), class: "btn btn-sm btn-success" %>
+            <%= link_to 'Destroy', post_item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></P>
+            <% end %>
+          </div>
         <% end %>
       </div>
-      
-      <div>
-        <%= render 'public/favorites/btn', post_item: @post_item %>
-      </div>
-      
-      <% if @post_item.customer == current_customer %>
-        <%= link_to 'Edit', edit_post_item_path(@post_item), class: "btn btn-sm btn-success" %>
-        <%= link_to 'Destroy', @post_item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
-      <% end %>
-      
-      <%= render 'public/post_comments/index', post_item: @post_item %>
-      <%= render 'public/post_comments/form', post_item: @post_item, post_comment: @post_comment %>
     </div>
   </div>
 </div>
+

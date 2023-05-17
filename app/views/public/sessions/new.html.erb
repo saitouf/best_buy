@@ -5,11 +5,11 @@
       <div class="form-body p-4">
       <%= form_with model: @customer, url: customer_session_path do |f| %>
         <div class="field">
-          <%= f.label :"メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.label :メールアドレス %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"sample@example.com" %>
         </div>
         <div class="field">
-          <%= f.label :"パスワード" %><br />
+          <%= f.label :パスワード %><br />
           <%= f.password_field :password, autocomplete: "current-password" %>
         </div>
         <div class="actions">
