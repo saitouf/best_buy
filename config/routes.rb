@@ -46,6 +46,7 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:destroy]
     end
     resources :groups, only: [:index, :show, :edit, :update, :destroy]
+    get '/rank' => 'ranks#rank', as: 'rank'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

@@ -1,1 +1,26 @@
-<div class="col-2 offset-3 mt-2"><%= link_to "編集する", edit_admin_customer_path(@customer.id), class: "btn btn-success" %></div>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <%= render 'public/customers/info', customer: @customer %>
+      <%= link_to edit_admin_customer_path(@customer.id), class: "btn btn-outline-secondary btn-block" do %>
+      <i class="fas fa-user-cog"></i>
+      <% end %>
+    </div>
+    <div class='col-md-8'>
+      <h2 class="mb-4 text-center">投稿記事一覧</h2>
+      <div class="images">
+        <% @post_items.each do |post_item| %>
+        <div class="dish_image text-center mx-4">
+          <div class="img">
+            <%= link_to admin_post_item_path(post_item.id) do %>
+            <%= image_tag post_item.get_image, size: "200x200" %></div>
+            <%= post_item.name %>
+            <% end %>
+            <P><%= link_to 'Edit', edit_admin_post_item_path(post_item), class: "btn btn-sm btn-success" %>
+            <%= link_to 'Destroy', admin_post_item_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></P>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

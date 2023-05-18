@@ -1,11 +1,24 @@
 <h1>チャットグループ一覧</h1>
-<% @groups.each do |list| %>
-  <%= link_to "/admin/groups/#{list.id}" do %>
-  <%= image_tag list.get_image, size: '50x50' %>
-  <%= list.name %>
-  <% end %>
-  <li class="group-list-table-each-group">
-    <%= link_to '編集', edit_group_path(list.id), method: :get %>
-    <%= link_to '削除', "/groups/#{list.id}", method: :delete %>
-  </li>
+<% if @groups == [] %>
+          <%= @group_none %>
+        <% else %>
+          <div class="card-deck mx-auto">
+            <div class="images">
+         <% @groups.each do |list| %>
+           <div class="card mb-3">
+           <%= link_to "/admin/groups/#{list.id}", class: "text-decoration-none" do %>
+          <%= image_tag list.get_image, size: '200x200', class: "card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= list.name %></h5>
+          </div>
+          <% end %>
+          <div class="card-footer">
+            <%= link_to '編集', edit_admin_group_path(list.id), method: :get, class: "btn btn-primary mr-2" %>
+            <%= link_to '削除', "/admin/groups/#{list.id}", method: :delete, class: "btn btn-danger" %>
+          </div>
+
+      </div>
+    <% end %>
+    </div>
+  </div>
 <% end %>
