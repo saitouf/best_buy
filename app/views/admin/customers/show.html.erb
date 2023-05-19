@@ -17,7 +17,7 @@
             <%= post_item.name %>
             <% end %>
             <P><%= link_to 'Edit', edit_admin_post_item_path(post_item), class: "btn btn-sm btn-success" %>
-            <%= link_to 'Destroy', admin_post_item_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></P>
+            <%= link_to 'Destroy', admin_post_item_path(post_item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></P>
           </div>
         <% end %>
       </div>
