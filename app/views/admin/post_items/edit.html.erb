@@ -2,7 +2,7 @@
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>管理側編集フォーム</h2>
-      <%= form_with model: @post_item, local: true do |f| %>
+      <%= form_with model: @post_item, url: admin_post_item_path(@post_item.id), method: :patch, local: true do |f| %>
         <!--#%= render 'layouts/errors', obj: @customer %-->
         <div class="form-group">
           <%= f.label :商品画像, class: "h4" %>

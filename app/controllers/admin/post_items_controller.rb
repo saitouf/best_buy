@@ -16,7 +16,7 @@ class Admin::PostItemsController < ApplicationController
   def update
     @post_item = PostItem.find(params[:id])
     if @post_item.update(post_item_params)
-      redirect_to admin_post_item_path(@post_item), notice: "You have updated post successfully."
+      redirect_to admin_post_item_path(@post_item), notice: "投稿編集が完了しました."
     else
       render "edit"
     end
