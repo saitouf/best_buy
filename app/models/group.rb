@@ -5,6 +5,9 @@ class Group < ApplicationRecord
   has_many :customers, through: :group_users, dependent: :destroy
   has_many :messages, dependent: :destroy
   
+  validates :name,presence:true
+  validates :introduction,presence:true,length:{maximum:100}
+  
   # グループ作成者情報管理
   def is_owned_by?(customer)
     owner_id == customer.id

@@ -14,6 +14,12 @@ class PostItem < ApplicationRecord
   scope :old, -> {order(created_at: :asc)}
   scope :comment_count, -> {order(comment: :desc)}
   
+  validates :name, presence: true
+  validates :price, presence: true
+  validates :explanation, presence: true
+  validates :thoughts, presence: true
+
+  
   # 投稿画像の有無を確認
   def get_image
     unless image.attached?

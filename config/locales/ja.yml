@@ -2,3 +2,33 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
+  # post_item投稿時エラーメッセージ日本語表示
+  activerecord:
+    errors:
+      models:
+        post_item:
+          attributes:
+            name:
+              blank: "名前を入力してください"
+            price:
+              blank: "価格を入力してください"
+            explanation:
+              blank: "説明を入力してください"
+            thoughts:
+              blank: "感想を入力してください"
+  
+  # サインアップ時エラーメッセージ日本語表示
+  errors:
+    messages:
+      not_saved: "保存できませんでした"
+  activerecord:
+    errors:
+      models:
+        customer:
+          attributes:
+            email:
+              blank: "メールアドレスを入力してください"
+            password:
+              blank: "パスワードを入力してください"
+            name:
+              blank: "名前を入力してください"

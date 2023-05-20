@@ -1,5 +1,6 @@
 class Public::GroupsController < ApplicationController
-  before_action :set_group, only: [:edit, :update]
+  # before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
+  # before_action :set_group, only: [:edit, :update]
 
   def index
     @groups = Group.all
@@ -53,8 +54,15 @@ class Public::GroupsController < ApplicationController
   def group_params
     params.require(:group).permit(:name, :introduction, :image)
   end
+  
+  # def ensure_correct_customer
+  #   @group = Group.find(params[:id])
+  #   unless @group.customer == current_customer
+  #   redirect_to post_items_path
+  #   end
+  # end
 
-  def set_group
-    @group = Group.find(params[:id])
-  end
+  # def set_group
+  #   @group = Group.find(params[:id])
+  # end
 end
