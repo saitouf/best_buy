@@ -6,21 +6,24 @@ class Public::PostItemsController < ApplicationController
   def create
     @post_item = PostItem.new(post_item_params)
     @post_item.customer_id = current_customer.id
-    @post_item.save
-    redirect_to post_item_path(@post_item), notice: "You have created book successfully."
+    if @post_item.save
+      redirect_to post_item_path(@post_item), notice: "You have created book successfully."
+    else
+      render "new"
+    end
   end
 
   def index
     if params[:latest]
-      @post_items = PostItem.latest
+      @post_items = PostItem.latest.page(params[:page]).per(10)
     elsif params[:old]
-      @post_items = PostItem.old
+      @post_items = PostItem.old.page(params[:page]).per(10)
     elsif params[:comment_count]
-      @post_items = PostItem.comment_count
+      @post_items = PostItem.comment_count.page(params[:page]).per(10)
     elsif params[:tag_id].present?
-      @post_items = Tag.find(params[:tag_id]).post_items
+      @post_items = Tag.find(params[:tag_id]).post_items.page(params[:page]).per(10)
     else
-      @post_items = PostItem.all
+      @post_items = PostItem.page(params[:page]).per(10)
     end
   end
 
@@ -52,7 +55,7 @@ class Public::PostItemsController < ApplicationController
   end
 
   def search
-    @post_items = PostItem.search(params[:keyword])
+    @post_items = PostItem.search(params[:keyword]).page(params[:page]).per(10)
     @keyword = params[:keyword]
     render "index"
   end

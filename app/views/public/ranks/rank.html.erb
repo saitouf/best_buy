@@ -16,9 +16,11 @@
             <h6 class="card-subtitle mb-2 text-muted"><%= post.name %></h6>
             <p class="card-text">
               <i class="fas fa-user"></i> <%= post.customer.name %> ｜
-              <i class="fas fa-heart"></i> <%= post.favorites.count %> |
               <i class="far fa-comment"></i><%= post.post_comments.count %> ｜
-              <i class="fas fa-eye"></i><%= post.view_counts.count %>
+              <i class="fas fa-eye"></i><%= post.view_counts.count %> | 
+              <span id="favorite_buttons_<%= post.id %>">
+                <%= render 'public/favorites/btn', post_item: post %>
+              </span>
             </p>
             <p><%= l post.created_at %></p>
           </div>
@@ -27,4 +29,5 @@
     <% end %>
   </div>
 </div>
+
   
