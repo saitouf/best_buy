@@ -12,25 +12,24 @@ class Customer < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users, dependent: :destroy, source: :room
   has_many :messages, dependent: :destroy
-  
+
   validates :name,presence:true
 
   # プロフィール画像有無確認
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'icon_nouser.jpg'
   end
-  
+
   # ログイン時に退会済みのユーザーが同じアカウントでログイン出来ないよう制約
   def active_for_authentication?
     super && (is_deleted == false)
   end
-  
+
   # ゲストログイン情報作成
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |customer|
       customer.password = SecureRandom.urlsafe_base64
-      # customer.confirmed_at = Time.now  # Confirmable を使用している場合は必要
-      # 例えば name を入力必須としているならば， customer.name = "ゲスト" なども必要
+      customer.name = 'ゲスト'
     end
   end
 end
