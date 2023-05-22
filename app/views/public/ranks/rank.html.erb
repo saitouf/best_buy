@@ -1,11 +1,16 @@
-<%= link_to 'いいね日', rank_path(favorite_daycount: "true") %>
- |<%= link_to 'いいね週', rank_path(favorite_weekcount: "true") %>
- |<%= link_to 'いいね月', rank_path(favorite_monthcount: "true") %>
- 
-
-  <div class="container">
+<div class="container">
+  <h1 class="text-center my-5">いいね数ランキングトップ10</h1>
   <div class="row">
-    <% @post_favorite_ranks.each.with_index(1) do |post, i| %>
+    <div class="col-md-6 offset-md-4 my-5">
+      <div class="btn-group">
+        <%= link_to '日間ランキング', rank_path(favorite_daycount: "true"), class: 'btn btn-secondary' %>
+        <%= link_to '週間ランキング', rank_path(favorite_weekcount: "true"), class: 'btn btn-secondary' %>
+        <%= link_to '月間ランキング', rank_path(favorite_monthcount: "true"), class: 'btn btn-secondary' %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <% @post_favorite_ranks.first(10).each.with_index(1) do |post, i| %>
       <div class="col-md-4 mb-4">
         <div class="card">
           <%= link_to post_item_path(post.id) do %>

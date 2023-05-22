@@ -1,5 +1,5 @@
 <div class="row justify-content-center mb-4">
-<%= image_tag customer.get_profile_image, size:'200x200' %>
+<%= image_tag customer.get_profile_image, size: '200x200', class: 'rounded-circle' %>
 </div>
 <table class='table mx-auto'>
   <tr class="align-middle text-center">
@@ -7,6 +7,9 @@
   </tr>
   <tr class="align-middle text-center">
 	  <th><%= customer.introduction %></th>
+  </tr>
+  <tr class="align-middle text-center">
+	  <th><%= link_to "いいねした投稿", favorite_index_path(@customer), class:"text-dark" %></th>
   </tr>
 </table>
 

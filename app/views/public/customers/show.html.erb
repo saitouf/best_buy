@@ -1,5 +1,3 @@
-<%= link_to "いいねした投稿", favorite_index_path(@customer) %>
-
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-4">
@@ -11,7 +9,7 @@
         <% @post_items.each do |post_item| %>
         <div class="dish_image text-center mx-4">
           <div class="img">
-            <%= link_to post_item_path(post_item.id) do %>
+            <%= link_to post_item_path(post_item.id), class:"text-dark" do %>
             <%= image_tag post_item.get_image, size: "200x200" %></div>
             <%= post_item.name %>
             <% end %>
