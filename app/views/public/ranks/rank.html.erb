@@ -15,10 +15,12 @@
         <div class="card">
           <%= link_to post_item_path(post.id) do %>
             <%= image_tag post.get_image, class: "card-img-top" %>
-          <% end %>
+           <% end %>
           <div class="card-body">
             <h5 class="card-title">第<%= i %>位</h5>
-            <h6 class="card-subtitle mb-2 text-muted"><%= post.name %></h6>
+            <%= link_to post_item_path(post.id) do %>
+            <h6 class="card-subtitle mb-2 text-dark"><%= post.name %></h6>
+            <% end %>
             <p class="card-text">
               <i class="fas fa-user"></i> <%= post.customer.name %> ｜
               <i class="far fa-comment"></i><%= post.post_comments.count %> ｜

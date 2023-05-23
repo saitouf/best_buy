@@ -1,6 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6 offset-md-3 text-center" style="font-size: 32px;">
+  <div class="col-md-6 offset-md-1 my-3" style="font-size: 24px;">
+    <%= link_to customer_path(@post_item.customer), class:"text-dark" do %>
+    <%= image_tag @post_item.customer.get_profile_image, size: '70x70', class: 'rounded-circle' %>
+    <%= @post_item.customer.name %>
+    <% end %>
+  </div>
+</div>
+  <div class="row">
+    <div class="col-md-6 offset-md-3 mb-4 text-center" style="font-size: 32px;">
         <%= @post_item.name %>
     </div>
   </div>
@@ -9,22 +17,22 @@
       <%= image_tag @post_item.get_image, size: "500x500", class: "img-fluid" %>
     </div>
   </div>
-  <div class="row mt-4">
+  <div class="row my-4">
     <div class="col-md-6 offset-md-3">
-      <h4>価格</h4>
+      <span class="h4 mr-3">価格</span>
       <%= number_with_delimiter(@post_item.price, delimiter: ',') %>円
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <h4>説明</h4>
-      <span class="bordered-element"><%= @post_item.explanation %></span>
+      <span class="bordered-element mb-4"><%= @post_item.explanation %></span>
     </div>
   </div>
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <h4>使用してみた感想</h4>
-      <span class="bordered-element"><%= @post_item.thoughts %></span>
+      <span class="bordered-element mb-4"><%= @post_item.thoughts %></span>
     </div>
   </div>
     <div class="row">
@@ -46,18 +54,18 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-6 offset-md-3">
-      閲覧数: <%= @post_item.view_counts.count %>
+    <div class="col-md-6 offset-md-3 mt-3">
+      閲覧数: <%= @post_item.view_counts.count %> | 
       <span id="favorite_buttons_<%= @post_item.id %>">
-        <%= render 'public/favorites/btn', post_item: @post_item %>
+        <%= render 'public/favorites/btn', post_item: @post_item %>件のいいね
       </span>
     </div>
   </div>
   <div class="row mt-4">
     <div class="col-md-6 offset-md-3">
       <% if @post_item.customer == current_customer %>
-        <%= link_to '投稿編集', edit_post_item_path(@post_item), class: "btn btn-sm btn-success" %>
-        <%= link_to '投稿削除', @post_item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+        <%= link_to '投稿編集', edit_post_item_path(@post_item), class: "btn btn-sm btn-success mr-3", style: "width: 120px;" %>
+        <%= link_to '投稿削除', @post_item, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", style: "width: 120px;" %>
       <% end %>
     </div>
   </div>

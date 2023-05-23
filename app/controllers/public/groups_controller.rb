@@ -3,7 +3,7 @@ class Public::GroupsController < ApplicationController
   # before_action :set_group, only: [:edit, :update]
 
   def index
-    @groups = Group.all
+    @groups = Group.page(params[:page]).per(9)
     @group_joining = GroupUser.where(customer_id: current_customer.id)
     @groups_none = "グループに参加していません。"
   end

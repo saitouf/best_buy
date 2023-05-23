@@ -14,13 +14,17 @@
             <%= post_item.name %>
             <% end %>
             <% if post_item.customer == current_customer %>
-            <P><%= link_to 'Edit', edit_post_item_path(post_item), class: "btn btn-sm btn-success" %>
-            <%= link_to 'Destroy', post_item_path(post_item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%></P>
+            <P><%= link_to '編集', edit_post_item_path(post_item), class: "btn btn-sm btn-success mr-1", style: "width: 80px;" %>
+            <%= link_to '削除', post_item_path(post_item), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger", style: "width: 80px;" %></P>
             <% end %>
           </div>
         <% end %>
       </div>
     </div>
   </div>
+  <div class='col-md-12 offset-md-7 mt-4'>
+    <%= paginate @post_items %>
+  </div>
 </div>
+
 

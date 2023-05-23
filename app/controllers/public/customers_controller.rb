@@ -5,7 +5,7 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @post_comment = PostComment.new
-    @post_items = @customer.post_items
+    @post_items = @customer.post_items.page(params[:page]).per(9)
   end
 
   def index

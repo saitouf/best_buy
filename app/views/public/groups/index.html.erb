@@ -40,12 +40,15 @@
           <% end %>
           <% if list.is_owned_by?(current_customer) %>
             <div class="card-footer">
-              <%= link_to '編集', edit_group_path(list.id), method: :get, class: "btn btn-primary mr-2" %>
-              <%= link_to '削除', "/groups/#{list.id}", method: :delete, class: "btn btn-danger" %>
+              <%= link_to '編集', edit_group_path(list.id), method: :get, class: "btn btn-success mx-3", style: "width: 100px;" %>
+              <%= link_to '削除', "/groups/#{list.id}", method: :delete, class: "btn btn-danger mx-3", style: "width: 100px;" %>
             </div>
           <% end %>
         </div>
       <% end %>
     </div>
   <% end %>
+  <div class='col-md-12 offset-md-5 mt-4'>
+    <%= paginate  @groups %>
+  </div>
 </div>
