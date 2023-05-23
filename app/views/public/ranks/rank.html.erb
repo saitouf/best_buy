@@ -12,14 +12,18 @@
   <div class="row">
     <% @post_favorite_ranks.first(10).each.with_index(1) do |post, i| %>
       <div class="col-md-4 mb-4">
-        <div class="card">
+        <div class="card" style="width: 350px; height: 550px;">
           <%= link_to post_item_path(post.id) do %>
             <%= image_tag post.get_image, class: "card-img-top" %>
            <% end %>
           <div class="card-body">
             <h5 class="card-title">第<%= i %>位</h5>
             <%= link_to post_item_path(post.id) do %>
-            <h6 class="card-subtitle mb-2 text-dark"><%= post.name %></h6>
+              <% if post.name.length > 65 %>
+                <h6 class="mb-2 text-dark"><%= post.name[0..64] + '...' %></h6>
+              <% else %>
+                <h6 class="mb-2 text-dark"><%= post.name %></h6>
+              <% end %>
             <% end %>
             <p class="card-text">
               <i class="fas fa-user"></i> <%= post.customer.name %> ｜

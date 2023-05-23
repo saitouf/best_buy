@@ -15,40 +15,40 @@
     </div>
       </div>
   </div>
-  
-  
   <% if @groups.empty? %>
     <div class="group-none text-center mt-3">
       <%= @group_none %>
     </div>
   <% else %>
-    <div class="card-columns mx-auto mt-3" style="max-width: 1000px;">
-      <% @groups.each do |list| %>
-        <div class="card my-5">
-          <%= link_to "/groups/#{list.id}", class: "text-decoration-none" do %>
-            <%= image_tag list.get_image, size: '200x300', class: "card-img-top" %>
-            <div class="card-body" style="height: 200px;">
-              <h5 class="card-title"><%= list.name %></h5>
-              <p class="card-text">
-                <% if list.introduction.length > 50 %>
-                  <%= list.introduction[0..49] + '...' %>
-                <% else %>
-                  <%= list.introduction %>
-                <% end %>
-              </p>
-            </div>
-          <% end %>
-          <% if list.is_owned_by?(current_customer) %>
-            <div class="card-footer">
-              <%= link_to '編集', edit_group_path(list.id), method: :get, class: "btn btn-success mx-3", style: "width: 100px;" %>
-              <%= link_to '削除', "/groups/#{list.id}", method: :delete, class: "btn btn-danger mx-3", style: "width: 100px;" %>
-            </div>
-          <% end %>
-        </div>
-      <% end %>
+    <div class="row">
+      <div class="card-columns mx-auto mt-3" style="width: 100%;">
+        <% @groups.each do |list| %>
+          <div class="card my-5" style="width: 330px; height: 510px;">
+            <%= link_to "/groups/#{list.id}", class: "text-decoration-none" do %>
+              <%= image_tag list.get_image, size: '200x300', class: "card-img-top" %>
+              <div class="card-body" style="height: 150px;">
+                <h5 class="card-title text-dark"><%= list.name %></h5>
+                <p class="card-text text-dark">
+                  <% if list.introduction.length > 50 %>
+                    <%= list.introduction[0..49] + '...' %>
+                  <% else %>
+                    <%= list.introduction %>
+                  <% end %>
+                </p>
+              </div>
+            <% end %>
+            <% if list.is_owned_by?(current_customer) %>
+              <div class="card-footer">
+                <%= link_to '編集', edit_group_path(list.id), method: :get, class: "btn btn-success mx-3", style: "width: 100px;" %>
+                <%= link_to '削除', "/groups/#{list.id}", method: :delete, class: "btn btn-danger mx-3", style: "width: 100px;" %>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   <% end %>
-  <div class='col-md-12 offset-md-5 mt-4'>
-    <%= paginate  @groups %>
-  </div>
+</div>
+<div class='col-md-12 offset-md-5 mt-4'>
+  <%= paginate  @groups %>
 </div>

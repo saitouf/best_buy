@@ -1,7 +1,7 @@
 class Admin::GroupsController < ApplicationController
 
   def index
-    @groups = Group.all
+    @groups = Group.page(params[:page]).per(9)
   end
 
   def show
