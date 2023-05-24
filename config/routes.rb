@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root :to => "homes#top"
+    get '/about' => 'homes#about'
     resources :post_items, only: [:new, :create, :index, :show, :destroy, :edit, :update] do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
     get '/rank' => 'ranks#rank', as: 'rank'
     # 検索機能のルーティング
     get '/search' => 'post_items#search', as: 'search'
+    get '/group_search' => 'groups#search', as: 'group_search'
      # 自身のいいね投稿確認のルーティング
     get "/customer/favorites" => "customers#favorites", as: "favorite_index"
   end
@@ -47,6 +49,9 @@ Rails.application.routes.draw do
     end
     resources :groups, only: [:index, :show, :edit, :update, :destroy]
     get '/rank' => 'ranks#rank', as: 'rank'
+     # 検索機能のルーティング
+    get '/search' => 'post_items#search', as: 'search'
+    get '/group_search' => 'groups#search', as: 'group_search'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

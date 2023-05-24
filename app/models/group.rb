@@ -16,4 +16,9 @@ class Group < ApplicationRecord
   def get_image
     (image.attached?) ? image : 'no_image.jpg'
   end
+  
+  # 検索情報の取得
+  def self.search(group_keyword)
+    where(["name like? OR introduction like?", "%#{group_keyword}%", "%#{group_keyword}%"])
+  end
 end

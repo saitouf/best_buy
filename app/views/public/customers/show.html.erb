@@ -11,7 +11,11 @@
           <div class="img">
             <%= link_to post_item_path(post_item.id), class:"text-dark" do %>
             <%= image_tag post_item.get_image, size: "200x200" %></div>
-            <%= post_item.name %>
+              <% if post_item.name.length > 26 %>
+                <%=  post_item.name[0..25] + '...' %>
+              <% else %>
+                <%= post_item.name %>
+              <% end %>
             <% end %>
             <% if post_item.customer == current_customer %>
             <P><%= link_to '編集', edit_post_item_path(post_item), class: "btn btn-sm btn-success mr-1", style: "width: 80px;" %>

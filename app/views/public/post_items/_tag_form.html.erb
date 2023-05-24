@@ -1,0 +1,6 @@
+<%= form_tag({controller: "post_items", action: "index"}, method: :get, class: 'input-group') do %>
+  <%= select_tag "tag_id", options_from_collection_for_select(Tag.all, "id", "name"), prompt: "ジャンルを選択してください", class: 'custom-select' %>
+  <div class="input-group-append">
+    <%= submit_tag '検索', class: 'btn btn-primary' %>
+  </div>
+<% end %>

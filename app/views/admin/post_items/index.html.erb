@@ -2,31 +2,19 @@
   <div class="row">
     <div class="col-md-6 offset-md-3 my-3">
       <div class="btn-group">
-        <%= link_to '新しい順', post_items_path(latest: "true"), class: 'btn btn-secondary' %>
-        <%= link_to '古い順', post_items_path(old: "true"), class: 'btn btn-secondary' %>
-        <%= link_to 'コメントの多い順', post_items_path(comment_count: "true"), class: 'btn btn-secondary' %>
-        <%= link_to 'いいね数の多い順', post_items_path(favorite_count: "true"), class: 'btn btn-secondary' %>
+        <%= link_to '新しい順', admin_post_items_path(latest: "true"), class: 'btn btn-secondary' %>
+        <%= link_to '古い順', admin_post_items_path(old: "true"), class: 'btn btn-secondary' %>
+        <%= link_to 'コメントの多い順', admin_post_items_path(comment_count: "true"), class: 'btn btn-secondary' %>
+        <%= link_to 'いいね数の多い順', admin_post_items_path(favorite_count: "true"), class: 'btn btn-secondary' %>
       </div>
     </div>
   </div>
   <div class="row mt-3">
     <div class="col-md-6">
-      <div class="search-form">
-        <%= form_with url: search_path, method: :get, local: true, class: 'input-group' do |f| %>
-          <%= f.text_field :keyword, value: @keyword, class: 'form-control' %>
-          <div class="input-group-append">
-            <%= f.submit "検索", class: 'btn btn-primary' %>
-          </div>
-        <% end %>
-      </div>
+      <%= render 'admin/searches/form', keyword: @keyword  %>
     </div>
     <div class="col-md-4">
-      <%= form_tag({controller: "post_items", action: "index"}, method: :get, class: 'input-group') do %>
-        <%= select_tag "tag_id", options_from_collection_for_select(Tag.all, "id", "name"), prompt: "ジャンルを選択してください", class: 'custom-select' %>
-        <div class="input-group-append">
-          <%= submit_tag '検索', class: 'btn btn-primary' %>
-        </div>
-      <% end %>
+      <%= render 'public/post_items/tag_form' %>
     </div>
   </div>
 </div>
@@ -47,10 +35,13 @@
           <span><i class="fas fa-user"></i> <%= post_item.customer.name %> ｜ </span>
           <span><i class="far fa-comment"></i><%= post_item.post_comments.count %> ｜ </span>
           <span><i class="fas fa-eye"></i><%= post_item.view_counts.count %> | </span>
-           <span><i class="fas fa-heart"></i> <%= post_item.favorites.count %></span>
+          <span><i class="fas fa-heart"></i> <%= post_item.favorites.count %></span>
           <p>投稿日時：<%= l post_item.created_at %></p>
         </div>
       </div>
     </div>
   </div>
 <% end %>
+<div class="d-flex justify-content-center">
+  <%= paginate @post_items %>
+</div>

@@ -28,6 +28,12 @@ class Admin::GroupsController < ApplicationController
       redirect_to admin_groups_path, notice: 'グループを削除しました。'
     end
   end
+  
+  def search
+    @groups = Group.search(params[:group_keyword]).page(params[:page]).per(10)
+    @group_keyword = params[:group_keyword]
+    render "index"
+  end
 
   private
 

@@ -2,12 +2,7 @@
   <h1 class="text-center my-5">グループ一覧</h1>
   <div class="row my-4 justify-content-center">
     <div class="col-md-5">
-      <div class="group-search">
-      <%= form_with url: groups_path, method: :get, local: true, class: 'input-group' do |f| %>
-        <%= f.text_field :keyword, placeholder: "グループ検索", class: "form-control" %>
-        <%= f.submit '検索', class: "btn btn-primary" %>
-      <% end %>
-    </div>
+      <%= render 'public/searches/group_form', keyword: @keyword  %>
     </div>
     <div class="col-md-5">
       <div class="group-new">

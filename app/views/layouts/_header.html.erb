@@ -1,7 +1,9 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3333CC; height: 70px;">
     <div class="container">
-      <a class="navbar-brand" href="/"><span>BestBuy</span></a>
+      <a class="navbar-brand" href="/">
+        <span> <%= image_tag 'Logo.png', size: "200x200" %></span>
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -9,60 +11,78 @@
         <ul class="navbar-nav ml-auto">
         <% if customer_signed_in? %>
           <li>
-            <%= link_to 'マイページ', customer_path(current_customer.id) %>
+            <%= link_to customer_path(current_customer.id),class: 'nav-link text-light' do %>
+              <i class="fas fa-user-alt"></i> マイページ
+            <% end %>
           </li>
           <li>
-            <%= link_to '投稿フォーム', new_post_item_path %>
+            <%= link_to new_post_item_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-plus-circle"></i> 投稿フォーム
+            <% end %>
           </li>
           <li>
-            <%= link_to '投稿一覧', post_items_path %>
+            <%= link_to post_items_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-list"></i> 投稿一覧
+            <% end %>
           </li>
           <li>
-            <%= link_to 'グループ', groups_path %>
+            <%= link_to groups_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-users"></i> グループ
+            <% end %>
           </li>
           <li>
-            <%= link_to 'ランキング', rank_path %>
-          </li>
-          <li>
-            <%= link_to root_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> Home
+            <%= link_to rank_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-crown"></i> ランキング
             <% end %>
           </li>
           <li>
             <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> Log out
+              <i class="fas fa-sign-out-alt"></i> ログアウト
             <% end %>
           </li>
         <% elsif admin_signed_in? %>
           <li>
-            <%= link_to 'グループ一覧', admin_groups_path %>
+            <%= link_to admin_groups_path,class: 'nav-link text-light' do %>
+            <i class="fas fa-users"></i> グループ
+            <% end %>
           </li>
           <li>
-            <%= link_to '投稿一覧', admin_post_items_path %>
+            <%= link_to admin_post_items_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-list"></i> 投稿一覧
+            <% end %>
           </li>
           <li>
             <%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-light' %>
           </li>
           <li>
-            <%= link_to 'ランキング', admin_rank_path %>
+            <%= link_to admin_rank_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-crown"></i> ランキング
+            <% end %>
           </li>
           <li>
-            <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
+            <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+              <i class="fas fa-sign-out-alt"></i> ログアウト
+            <% end %>
           </li>
         <% else %>
           <li>
             <%= link_to root_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> Home
+              <i class="fas fa-home"></i> ホーム
+            <% end %>
+          </li>
+          <li>
+            <%= link_to about_path,class: 'nav-link text-light' do %>
+              <i class="fas fa-flag"></i> About
             <% end %>
           </li>
           <li>
             <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-user-plus"></i> Sign up
+              <i class="fas fa-user-plus"></i> サインアップ
             <% end %>
           </li>
           <li>
             <%= link_to new_customer_session_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-in-alt"></i> Log in
+              <i class="fas fa-sign-in-alt"></i> ログイン
             <% end %>
           </li>
         <% end %>

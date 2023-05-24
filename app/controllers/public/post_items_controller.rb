@@ -1,6 +1,6 @@
 class Public::PostItemsController < ApplicationController
   before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
-
+  
   def new
     @post_item = PostItem.new
   end
@@ -69,7 +69,7 @@ class Public::PostItemsController < ApplicationController
   def post_item_params
     params.require(:post_item).permit(:name, :image, :price, :explanation, :thoughts, :recommend_point, tag_ids: [])
   end
-
+  
   def ensure_correct_customer
     @post_item = PostItem.find(params[:id])
     unless @post_item.customer == current_customer

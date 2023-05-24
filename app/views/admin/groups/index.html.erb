@@ -3,11 +3,8 @@
   <div class="row my-4 justify-content-center">
     <div class="col-md-5">
       <div class="group-search">
-      <%= form_with url: admin_groups_path, method: :get, local: true, class: 'input-group' do |f| %>
-        <%= f.text_field :keyword, placeholder: "グループ検索", class: "form-control" %>
-        <%= f.submit '検索', class: "btn btn-primary" %>
-      <% end %>
-    </div>
+        <%= render 'admin/searches/group_form', keyword: @keyword  %>
+      </div>
     </div>
   </div>
   <% if @groups.empty? %>
@@ -19,7 +16,7 @@
       <div class="card-columns mx-auto mt-3" style="width: 100%;">
         <% @groups.each do |list| %>
           <div class="card my-5" style="width: 330px; height: 510px;">
-            <%= link_to "/groups/#{list.id}", class: "text-decoration-none" do %>
+            <%= link_to "/admin/groups/#{list.id}", class: "text-decoration-none" do %>
               <%= image_tag list.get_image, size: '200x300', class: "card-img-top" %>
               <div class="card-body" style="height: 150px;">
                 <h5 class="card-title text-dark"><%= list.name %></h5>

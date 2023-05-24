@@ -11,22 +11,10 @@
   </div>
   <div class="row mt-3">
     <div class="col-md-6">
-      <div class="search-form">
-        <%= form_with url: search_path, method: :get, local: true, class: 'input-group' do |f| %>
-          <%= f.text_field :keyword, value: @keyword, class: 'form-control' %>
-          <div class="input-group-append">
-            <%= f.submit "検索", class: 'btn btn-primary' %>
-          </div>
-        <% end %>
-      </div>
+      <%= render 'public/searches/form', keyword: @keyword  %>
     </div>
     <div class="col-md-4">
-      <%= form_tag({controller: "post_items", action: "index"}, method: :get, class: 'input-group') do %>
-        <%= select_tag "tag_id", options_from_collection_for_select(Tag.all, "id", "name"), prompt: "ジャンルを選択してください", class: 'custom-select' %>
-        <div class="input-group-append">
-          <%= submit_tag '検索', class: 'btn btn-primary' %>
-        </div>
-      <% end %>
+      <%= render 'tag_form' %>
     </div>
   </div>
 </div>
@@ -40,7 +28,13 @@
         <div class="col-10">
           <p>
             <%= link_to(post_item_path(post_item), class:"text-dark") do %>
-              <h4><%= post_item.name %></h4>
+              <h4>
+                <% if post_item.name.length > 78 %>
+                  <%=  post_item.name[0..77] + '...' %>
+                <% else %>
+                  <%= post_item.name %>
+                <% end %>
+              </h4>
             <% end %>
           </p>
           <p class="card-text">

@@ -13,7 +13,7 @@
     <% @post_favorite_ranks.first(10).each.with_index(1) do |post, i| %>
       <div class="col-md-4 mb-4">
         <div class="card" style="width: 350px; height: 550px;">
-          <%= link_to post_item_path(post.id) do %>
+          <%= link_to admin_post_item_path(post.id) do %>
             <%= image_tag post.get_image, class: "card-img-top" %>
            <% end %>
           <div class="card-body">

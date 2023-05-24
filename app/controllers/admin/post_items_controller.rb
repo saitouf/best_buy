@@ -1,7 +1,19 @@
 class Admin::PostItemsController < ApplicationController
 
   def index
-    @post_items = PostItem.all
+    if params[:latest]
+      @post_items = PostItem.latest.page(params[:page]).per(10)
+    elsif params[:old]
+      @post_items = PostItem.old.page(params[:page]).per(10)
+    elsif params[:comment_count]
+      @post_items = PostItem.order(comment_count: :desc).page(params[:page]).per(10)
+    elsif params[:favorite_count]
+      @post_items = PostItem.order(favorite_count: :desc).page(params[:page]).per(10)
+    elsif params[:tag_id].present?
+      @post_items = Tag.find(params[:tag_id]).post_items.page(params[:page]).per(10)
+    else
+      @post_items = PostItem.page(params[:page]).per(10)
+    end
   end
 
   def show
@@ -26,6 +38,12 @@ class Admin::PostItemsController < ApplicationController
     @post_item = PostItem.find(params[:id])
     @post_item.destroy
     redirect_to admin_post_items_path
+  end
+  
+  def search
+    @post_items = PostItem.search(params[:keyword]).page(params[:page]).per(10)
+    @keyword = params[:keyword]
+    render "index"
   end
 
   private

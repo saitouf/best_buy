@@ -36,6 +36,7 @@ class PostItem < ApplicationRecord
   
   # 検索情報の取得
   def self.search(keyword)
-    where(["name like? OR price like?", "%#{keyword}%", "%#{keyword}%"])
+    where(["name like? OR price like? OR explanation like? OR thoughts like? OR recommend_point like?",
+          "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
   end
 end
