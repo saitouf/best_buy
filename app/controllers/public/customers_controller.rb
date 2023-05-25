@@ -19,7 +19,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = Customer.find(params[:id])
     if @customer.update(customer_params)
-      redirect_to customer_path(@customer), notice: "You have updated user successfully."
+      redirect_to customer_path(@customer), notice: "ユーザー情報を更新しました。"
     else
       render "edit"
     end
@@ -29,7 +29,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     @customer.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会処理を実行いたしました"
+    flash[:notice] = "退会処理を実行いたしました。"
     redirect_to root_path
   end
 

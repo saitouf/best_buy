@@ -31,7 +31,7 @@
             <% end %>
               <div class="card-footer">
                 <%= link_to '編集', edit_admin_group_path(list.id), method: :get, class: "btn btn-success mx-3", style: "width: 100px;" %>
-                <%= link_to '削除', "/admin/groups/#{list.id}", method: :delete, class: "btn btn-danger mx-3", style: "width: 100px;" %>
+                <%= link_to '削除', admin_group_path(list.id), method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger mx-3", style: "width: 100px;" %>
               </div>
           </div>
         <% end %>

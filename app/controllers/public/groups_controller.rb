@@ -25,7 +25,6 @@ class Public::GroupsController < ApplicationController
   end
 
   def show
-    # @messages = Message.all
     @group = Group.find(params[:id])
     @messages = @group.messages
   end

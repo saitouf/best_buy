@@ -35,7 +35,7 @@
             <% if list.is_owned_by?(current_customer) %>
               <div class="card-footer">
                 <%= link_to '編集', edit_group_path(list.id), method: :get, class: "btn btn-success mx-3", style: "width: 100px;" %>
-                <%= link_to '削除', "/groups/#{list.id}", method: :delete, class: "btn btn-danger mx-3", style: "width: 100px;" %>
+                <%= link_to '削除', group_path(list.id), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger mx-3", style: "width: 100px;" %>
               </div>
             <% end %>
           </div>

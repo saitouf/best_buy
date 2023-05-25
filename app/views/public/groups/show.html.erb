@@ -1,19 +1,22 @@
-<div class="group-show">
-  <div class="show-group-chat-back">
-    <span class="group-show-group-chat-back">
-      <%= link_to groups_path do %>
-                ＜
-      <% end %>
-    </span>
+<div class="container">
+  <div class="group-show card my-5">
+    <div class="card-body">
+      <h4 class="card-title">グループの概要</h4>
+      <p class="card-text"><%= @group.introduction %></p>
+    </div>
   </div>
-  
-  <h1>Chat room</h1>
-  <div id='messages' data-room_id="<%= @group.id %>">
-    <%= render @messages %>
+  <div class="card my-5">
+    <div class="card-body">
+      <h1 class="card-title">Chat Room</h1>
+      <div id="messages" data-room_id="<%= @group.id %>">
+        <%= render @messages %>
+      </div>
+      <form>
+        <div class="form-group">
+          <%= label_tag :content, '入力フォーム' %>
+          <input type="text" class="form-control" data-behavior="room_speaker" placeholder="メッセージを入力してください">
+        </div>
+      </form>
+    </div>
   </div>
-
-  <form>
-    <%= label_tag :content, 'Say something:' %>
-    <input type="text" data-behavior="room_speaker">
-  </form>
 </div>

@@ -10,7 +10,7 @@ class Public::PostItemsController < ApplicationController
     @post_item = PostItem.new(post_item_params)
     @post_item.customer_id = current_customer.id
     if @post_item.save
-      redirect_to post_item_path(@post_item), notice: "You have created book successfully."
+      redirect_to post_item_path(@post_item), notice: "新規投稿しました。"
     else
       render "new"
     end
@@ -47,7 +47,7 @@ class Public::PostItemsController < ApplicationController
   def update
     @post_item = PostItem.find(params[:id])
     if @post_item.update(post_item_params)
-      redirect_to post_item_path(@post_item), notice: "You have updated post successfully."
+      redirect_to post_item_path(@post_item), notice: "投稿を編集しました。"
     else
       render "edit"
     end
@@ -56,7 +56,7 @@ class Public::PostItemsController < ApplicationController
   def destroy
     @post_item = PostItem.find(params[:id])
     @post_item.destroy
-    redirect_to post_items_path
+    redirect_to customer_path(current_customer), notice: "投稿を削除しました。"
   end
 
   def search
