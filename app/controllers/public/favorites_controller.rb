@@ -1,4 +1,5 @@
 class Public::FavoritesController < ApplicationController
+  before_action :authenticate_customer!
 
   def create
     @post_item = PostItem.find(params[:post_item_id])

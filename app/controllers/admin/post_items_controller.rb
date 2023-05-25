@@ -1,4 +1,5 @@
 class Admin::PostItemsController < ApplicationController
+  before_action :authenticate_admin!
 
   def index
     if params[:latest]

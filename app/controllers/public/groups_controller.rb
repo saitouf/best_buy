@@ -1,11 +1,12 @@
 class Public::GroupsController < ApplicationController
+  before_action :authenticate_customer!
   # before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
   # before_action :set_group, only: [:edit, :update]
 
   def index
     @groups = Group.page(params[:page]).per(9)
     @group_joining = GroupUser.where(customer_id: current_customer.id)
-    @groups_none = "グループに参加していません。"
+    @groups_none = "どのグループにも参加していません。"
   end
 
   def new

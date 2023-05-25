@@ -1,4 +1,5 @@
 class Admin::RanksController < ApplicationController
+  before_action :authenticate_admin!
   
   def rank
     if params[:favorite_daycount]

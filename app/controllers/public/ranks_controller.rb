@@ -1,4 +1,5 @@
 class Public::RanksController < ApplicationController
+  before_action :authenticate_customer!
 
    # 投稿のいいね数、日・週・月別ランキング
   def rank

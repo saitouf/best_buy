@@ -1,10 +1,9 @@
 <div class='container'>
-  <%= render 'layouts/errors', obj: @post_item %>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
       <h2>編集フォーム</h2>
       <%= form_with model: @post_item, local: true do |f| %>
-        <!--#%= render 'layouts/errors', obj: @customer %-->
+        <%= render 'layouts/errors', obj: @post_item %>
         <div class="form-group">
           <%= f.label :商品画像, class: "h4" %>
           <%= f.file_field :image, class: "form-control-file", accept: 'image/*' %>

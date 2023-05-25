@@ -1,4 +1,5 @@
 class Public::CustomersController < ApplicationController
+  before_action :authenticate_customer!
   before_action :ensure_correct_customer, only: [:edit, :update]
   # before_action :set_customerr, only: [:likes]
 

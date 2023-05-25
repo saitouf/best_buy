@@ -6,7 +6,7 @@ class Group < ApplicationRecord
   has_many :messages, dependent: :destroy
   
   validates :name,presence:true
-  validates :introduction,presence:true,length:{maximum:100}
+  validates :introduction,presence:true,length:{in: 5..200}
   
   # グループ作成者情報管理
   def is_owned_by?(customer)

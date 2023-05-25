@@ -14,11 +14,12 @@ class PostItem < ApplicationRecord
   scope :old, -> {order(created_at: :asc)}
   scope :comment_count, -> {order(comment: :desc)}
   
-  validates :name, presence: true
+  validates :name, presence: true 
   validates :price, presence: true
-  validates :explanation, presence: true
-  validates :thoughts, presence: true
-
+  validates :explanation, presence: true, length: {maximum:300}
+  validates :thoughts, presence: true, length: {maximum:300}
+  validates :recommend_point, presence: true, length: {maximum:300}
+  
   
   # 投稿画像の有無を確認
   def get_image

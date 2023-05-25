@@ -2,7 +2,7 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
-  # post_item投稿時エラーメッセージ日本語表示
+      
   activerecord:
     errors:
       models:
@@ -13,17 +13,14 @@ ja:
             price:
               blank: "価格を入力してください"
             explanation:
-              blank: "説明を入力してください"
+              blank: "使用用途を入力してください"
+              too_long: "使用用途は%{count}文字以下で入力してください"
             thoughts:
               blank: "感想を入力してください"
-  
-  # サインアップ時エラーメッセージ日本語表示
-  errors:
-    messages:
-      not_saved: "保存できませんでした"
-  activerecord:
-    errors:
-      models:
+              too_long: "感想は%{count}文字以下で入力してください"
+            recommend_point:
+              blank: "おすすめポイントを入力してください"
+              too_long: "おすすめポイントは%{count}文字以下で入力してください"
         customer:
           attributes:
             email:
@@ -32,3 +29,17 @@ ja:
               blank: "パスワードを入力してください"
             name:
               blank: "名前を入力してください"
+            introduction:
+              too_long: "自己紹介は%{count}文字以内で入力してください"
+        group:
+          attributes:
+            name:
+              blank: "グループ名を入力してください"
+            introduction:
+              blank: "グループ概要を入力してください"
+              too_short: "グループ概要は%{count}文字以上で入力してください"
+              too_long: "グループ概要は%{count}文字以下で入力してください"
+        
+  errors:
+    messages:
+      not_saved: "保存できませんでした"
