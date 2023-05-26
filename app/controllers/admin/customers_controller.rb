@@ -1,5 +1,6 @@
 class Admin::CustomersController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_customer, only: [:favorites]
 
   def index
     @customers = Customer.all
@@ -23,10 +24,20 @@ class Admin::CustomersController < ApplicationController
       render "edit"
     end
   end
+  
+  def favorites
+    favorites = Favorite.where(customer_id: @customer.id).pluck(:post_item_id)
+    @favorite_posts = PostItem.where(id: favorites)
+  end
+
 
   private
 
   def customer_params
     params.require(:customer).permit(:name, :email, :is_deleted)
+  end
+  
+  def set_customer
+    @customer = Customer.find(params[:id])
   end
 end

@@ -1,7 +1,7 @@
 class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_correct_customer, only: [:edit, :update]
-  # before_action :set_customerr, only: [:likes]
+  before_action :set_customer, only: [:favorites]
 
   def show
     @customer = Customer.find(params[:id])
@@ -34,9 +34,8 @@ class Public::CustomersController < ApplicationController
   end
 
   def favorites
-    @customer = current_customer
     favorites = Favorite.where(customer_id: @customer.id).pluck(:post_item_id)
-    @favorites_posts = PostItem.find(favorites)
+    @favorite_posts = PostItem.where(id: favorites)
   end
 
   private
@@ -52,7 +51,7 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  # def set_customer
-  #   @customer = Customer.find(params[:id])
-  # end
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
 end

@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-md-4">
-      <%= render 'public/customers/info', customer: @customer %>
+      <%= render 'admin/customers/info', customer: @customer %>
       <%= link_to edit_admin_customer_path(@customer.id), class: "btn btn-outline-secondary btn-block" do %>
       <i class="fas fa-user-cog"></i>
       <% end %>

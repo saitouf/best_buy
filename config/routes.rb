@@ -21,7 +21,12 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
       resource :favorites, only: [:create, :destroy]
     end
-    resources :customers, only: [:show,:edit,:update]
+    resources :customers, only: [:show,:edit,:update] do
+    # いいね投稿確認のルーティング
+      member do
+        get "/customer/favorites" => "customers#favorites", as: "favorite_index"
+      end
+    end
     resources :groups, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     # 退会確認画面
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
@@ -32,8 +37,6 @@ Rails.application.routes.draw do
     # 検索機能のルーティング
     get '/search' => 'post_items#search', as: 'search'
     get '/group_search' => 'groups#search', as: 'group_search'
-     # 自身のいいね投稿確認のルーティング
-    get "/customer/favorites" => "customers#favorites", as: "favorite_index"
   end
 
   # 管理者用
@@ -42,8 +45,12 @@ Rails.application.routes.draw do
 }
 
   namespace :admin do
-    # root :to => "homes#top"
-    resources :customers, only: [:index, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update] do
+    # いいね投稿確認のルーティング
+      member do
+        get "/customer/favorites" => "customers#favorites", as: "favorite_index"
+      end
+    end
     resources :post_items, only: [:index, :show, :destroy, :edit, :update] do
       resources :post_comments, only: [:destroy]
     end
