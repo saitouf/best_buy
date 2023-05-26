@@ -8,15 +8,17 @@ ja:
       models:
         post_item:
           attributes:
+            tag_ids:
+              blank: "タグを選択してください"
             name:
-              blank: "名前を入力してください"
+              blank: "商品名を入力してください"
             price:
-              blank: "価格を入力してください"
+              blank: "商品価格を入力してください"
             explanation:
               blank: "使用用途を入力してください"
               too_long: "使用用途は%{count}文字以下で入力してください"
             thoughts:
-              blank: "感想を入力してください"
+              blank: "使用してみた感想を入力してください"
               too_long: "感想は%{count}文字以下で入力してください"
             recommend_point:
               blank: "おすすめポイントを入力してください"

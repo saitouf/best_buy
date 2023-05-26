@@ -1,20 +1,20 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>グループ作成</h2>
+    <div class="col-md-8 mx-auto">
+      <h2 class=" my-5">グループ作成</h2>
       <%= form_with model: @group, local: true do |f| %>
         <%= render 'layouts/errors', obj: @group %>
         <div class="form-group">
           <%= f.label :グループ画像, class: "h4" %>
-          <%= f.file_field :image, class: "form-control-file", accept: 'image/*' %>
+          <%= f.file_field :image, class: "form-control-file mb-4", accept: 'image/*' %>
         </div>
         <div class="form-group">
           <%= f.label :グループ名, class: "h4" %>
-          <%= f.text_field :name, class: "form-control" %>
+          <%= f.text_field :name, class: "form-control mb-4", style: "width: 500px;" %>
         </div>
         <div class="form-group">
           <%= f.label :グループ概要, class: "h4" %>
-          <%= f.text_area :introduction, class: "form-control" %>
+          <%= f.text_area :introduction, class: "form-control mb-5" %>
         </div>
         <div class="form-group">
           <%= f.submit "グループを作成する", class: 'btn btn-primary', style: "width: 200px;" %>

@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='row'>
-    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-      <h2>管理側編集フォーム</h2>
+    <div class="col-md-10 mx-auto">
+      <h2 class="my-5">投稿編集フォーム</h2>
       <%= form_with model: @post_item, url: admin_post_item_path(@post_item.id), method: :patch, local: true do |f| %>
         <%= render 'layouts/errors', obj: @post_item %>
         <div class="form-group">
@@ -10,27 +10,27 @@
         </div>
         <div class="form-group">
           <%= f.label :商品画像, class: "h4" %>
-          <%= f.file_field :image, class: "form-control-file", accept: 'image/*' %>
+          <%= f.file_field :image, class: "form-control-file mb-4", accept: 'image/*' %>
         </div>
         <div class="form-group">
           <%= f.label :商品名, class: "h4" %>
-          <%= f.text_field :name, class: "form-control" %>
+          <%= f.text_field :name, class: "form-control mb-4" %>
         </div>
         <div class="form-group">
           <%= f.label :価格, class: "h4" %>
-          <%= f.text_area :price, class: "form-control" %>
+          <%= f.text_field :price, class: "form-control mb-4" %>
         </div>
         <div class="form-group">
           <%= f.label :使用用途, class: "h4" %>
-          <%= f.text_area :explanation, class: "form-control" %>
+          <%= f.text_area :explanation, class: "form-control mb-4" %>
         </div>
         <div class="form-group">
           <%= f.label :使用してみた感想, class: "h4" %>
-          <%= f.text_area :thoughts, class: "form-control" %>
+          <%= f.text_area :thoughts, class: "form-control mb-4" %>
         </div>
         <div class="form-group">
           <%= f.label :おすすめポイント, class: "h4" %>
-          <%= f.text_area :recommend_point, class: "form-control" %>
+          <%= f.text_area :recommend_point, class: "form-control mb-5" %>
         </div>
         <div class="form-group">
           <%= f.submit "変更を保存", class: 'btn btn-success', style: "width: 200px;" %>

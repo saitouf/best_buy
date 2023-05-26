@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mt-3">
+    <div class="col-md-10 mt-5">
       <div style="position: relative;">
         <img src="/assets/top_image.jpg" style="width: 1000px; height: 600px;">
         <div class="text-center" style="position: absolute; bottom: 0; left: 0; right: 0; background-color: rgba(255, 255, 255, 0.7); padding: 20px; width: 1000px;">
@@ -17,17 +17,17 @@
     </div>
   </div>
   <div class="col-md-7 offset-md-4 my-5">
-  <h3>商品ランキングトップ３</h3>
+  <h3>ランキングトップ３</h3>
   </div>
     <div class="row">
       <% @post_favorite_ranks.first(3).each.with_index(1) do |post, i| %>
         <div class="col-md-4 mb-4">
-          <div class="card">
+          <div class="card", style="width: 300px; height: 450px;">
             <%= image_tag post.get_image, class: "card-img-top" %>
           <div class="card-body">
             <h5 class="card-title">第<%= i %>位</h5>
-            <% if post.name.length > 43 %>
-              <h6 class="mb-2 text-dark"><%= post.name[0..42] + '...' %></h6>
+            <% if post.name.length > 50 %>
+              <h6 class="mb-2 text-dark"><%= post.name[0..49] + '...' %></h6>
             <% else %>
               <h6 class="mb-2 text-dark"><%= post.name %></h6>
             <% end %>
