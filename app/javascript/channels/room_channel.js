@@ -7,7 +7,6 @@ $(function(){
   },
 
   received: function(data) {
-    console.log(data);
     return $('#messages').append(data['message']);
   },
 

@@ -1,4 +1,7 @@
 class PostItem < ApplicationRecord
+  
+  # whereで指定した順番で取得
+  extend OrderAsSpecified
 
   has_one_attached :image
 

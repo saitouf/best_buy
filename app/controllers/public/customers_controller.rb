@@ -2,6 +2,8 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_correct_customer, only: [:edit, :update]
   before_action :set_customer, only: [:favorites]
+  before_action :ensure_normal_customer, only: %i[update destroy]
+
 
   def show
     @customer = Customer.find(params[:id])
@@ -44,7 +46,7 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:name, :introduction, :profile_image)
   end
-  
+
   def ensure_correct_customer
     @customer = Customer.find(params[:id])
     unless @customer == current_customer
@@ -54,5 +56,12 @@ class Public::CustomersController < ApplicationController
 
   def set_customer
     @customer = Customer.find(params[:id])
+  end
+  
+  # ゲストログイン情報、編集・削除無効
+  def ensure_normal_customer
+    if current_customer.email == 'guest@example.com'
+      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません。'
+    end
   end
 end

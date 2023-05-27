@@ -55,7 +55,7 @@
   </div>
   <div class="row">
     <div class="col-md-6 offset-md-3 mt-3">
-      閲覧数: <%= @post_item.view_counts.count %> | 
+      閲覧数: <%= @post_item.view_counts.count %> |
       <span><i class="fas fa-heart"></i> <%= @post_item.favorites.count %>
     </div>
   </div>
@@ -68,13 +68,8 @@
   <div class="row mt-4">
     <div class="col-md-6 offset-md-3">
       <div class="new-comment">
-        <%= render 'public/post_comments/index', post_item: @post_item %>
+        <%= render 'admin/post_comments/index', post_item: @post_item %>
       </div>
-    </div>
-  </div>
-  <div class="row mt-4">
-    <div class="col-md-6 offset-md-3">
-      <%= render 'public/post_comments/form', post_item: @post_item, post_comment: @post_comment %>
     </div>
   </div>
 </div>

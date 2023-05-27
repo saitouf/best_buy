@@ -1,5 +1,5 @@
-<div class='message'>
-  <!--%= message.content %>-->
-  <p><%= "#{message.customer.name}:  #{message.content}" %></p>
+<div class='message mb-5'>
+  <p style="font-size: 20px;"><%= "#{message.customer.name}:  #{message.content}" %></p>
+  <%= l message.created_at %>
 </div>
 

@@ -1,15 +1,10 @@
 # frozen_string_literal: true
 
 class Public::RegistrationsController < Devise::RegistrationsController
-  before_action :ensure_normal_customer, only: %i[update destroy]
+  
   
   private
   
-  def ensure_normal_customer
-    if resource.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません。'
-    end
-  end
   
   def after_sign_up_path_for(resource)
     post_items_path
