@@ -22,13 +22,17 @@ class Public::PostItemsController < ApplicationController
     elsif params[:old]
       @post_items = PostItem.old.page(params[:page]).per(10)
     elsif params[:comment_count]
-      @post_items = PostItem.order(comment_count: :desc).page(params[:page]).per(10)
+      post_item_id = PostComment.group(:post_item_id).order('count(post_item_id) desc').pluck(:post_item_id)
+      @post_items = PostItem.where(id: post_item_id).page(params[:page]).per(10)
     elsif params[:favorite_count]
-      @post_items = PostItem.order(favorite_count: :desc).page(params[:page]).per(10)
+      post_item_id = Favorite.group(:post_item_id).order('count(post_item_id) desc').pluck(:post_item_id)
+      @post_items = PostItem.where(id: post_item_id).page(params[:page]).per(10)
     elsif params[:tag_id].present?
-      @post_items = Tag.find(params[:tag_id]).post_items.page(params[:page]).per(10)
+      @post_items = Tag.find(params[:tag_id]).post_items.order(created_at: :desc).page(params[:page]).per(10)
     else
-      @post_items = PostItem.page(params[:page]).per(10)
+      to = Time.current.at_end_of_day
+      from = (to - 30.days).at_beginning_of_day
+      @post_items = PostItem.where(created_at: from..to).order(created_at: :desc).page(params[:page]).per(10)
     end
   end
 

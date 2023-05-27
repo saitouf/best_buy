@@ -59,6 +59,7 @@ Rails.application.routes.draw do
      # 検索機能のルーティング
     get '/search' => 'post_items#search', as: 'search'
     get '/group_search' => 'groups#search', as: 'group_search'
+    get '/customer_search' => 'customers#search', as: 'customer_search'
   end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

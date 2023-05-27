@@ -25,6 +25,11 @@ class Customer < ApplicationRecord
   def active_for_authentication?
     super && (is_deleted == false)
   end
+  
+  # 検索情報の取得
+  def self.search(customer_keyword)
+    where(["name like? OR email like?", "%#{customer_keyword}%", "%#{customer_keyword}%"])
+  end
 
   # ゲストログイン情報作成
   def self.guest

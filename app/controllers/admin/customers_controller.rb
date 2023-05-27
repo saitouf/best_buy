@@ -3,7 +3,7 @@ class Admin::CustomersController < ApplicationController
   before_action :set_customer, only: [:favorites]
 
   def index
-    @customers = Customer.all
+    @customers = Customer.page(params[:page]).per(9)
   end
 
   def show
@@ -29,7 +29,12 @@ class Admin::CustomersController < ApplicationController
     favorites = Favorite.where(customer_id: @customer.id).pluck(:post_item_id)
     @favorite_posts = PostItem.where(id: favorites)
   end
-
+  
+  def search
+    @customers = Customer.search(params[:customer_keyword]).page(params[:page]).per(10)
+    @customer_keyword = params[:customer_keyword]
+    render "index"
+  end
 
   private
 
