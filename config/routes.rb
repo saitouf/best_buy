@@ -27,7 +27,7 @@ Rails.application.routes.draw do
         get "/customer/favorites" => "customers#favorites", as: "favorite_index"
       end
     end
-    resources :groups, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+    resources :groups, only: [:index, :new, :create, :show, :edit, :update, :destroy] 
     # 退会確認画面
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     # 論理削除用のルーティング
