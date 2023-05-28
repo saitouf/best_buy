@@ -35,7 +35,6 @@ class Public::CustomersController < ApplicationController
   def favorites
     favorites = Favorite.where(customer_id: @customer.id).pluck(:post_item_id)
     @favorite_posts = PostItem.where(id: favorites)
-    # @post_item = PostItem.find(params[:id])
   end
 
   private
