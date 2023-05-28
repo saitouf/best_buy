@@ -34,8 +34,8 @@
 投稿する際には、必ずしも写真付きである必要はございません。
 ※ ただし写真付きですと信憑性が増します
 
-## 設計書
-使用検討中です
+## テスト仕様書
+https://docs.google.com/spreadsheets/d/1W9cByxW8yv2iFAil-wU59ZtIk-UCHkE3/edit?usp=sharing&ouid=114275398900635984654&rtpof=true&sd=true
 
 ## 開発環境
 - OS：Linux(CentOS)
