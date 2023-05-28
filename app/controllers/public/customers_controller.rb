@@ -35,7 +35,7 @@ class Public::CustomersController < ApplicationController
   def favorites
     favorites = Favorite.where(customer_id: @customer.id).pluck(:post_item_id)
     @favorite_posts = PostItem.where(id: favorites)
-    @post_item = PostItem.find(params[:id])
+    # @post_item = PostItem.find(params[:id])
   end
 
   private
@@ -54,7 +54,7 @@ class Public::CustomersController < ApplicationController
   def set_customer
     @customer = Customer.find(params[:id])
   end
-  
+
   # ゲストログイン情報、編集・削除無効
   def ensure_normal_customer
     if current_customer.email == 'guest@example.com'
