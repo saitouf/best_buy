@@ -2,16 +2,13 @@ class Public::CustomersController < ApplicationController
   before_action :authenticate_customer!
   before_action :ensure_correct_customer, only: [:edit, :update]
   before_action :set_customer, only: [:favorites]
-  before_action :ensure_normal_customer, only: %i[update destroy]
+  before_action :ensure_normal_customer, only: %i[update withdrawal]
 
 
   def show
     @customer = Customer.find(params[:id])
     @post_comment = PostComment.new
     @post_items = @customer.post_items.page(params[:page]).per(9)
-  end
-
-  def index
   end
 
   def edit
@@ -61,7 +58,7 @@ class Public::CustomersController < ApplicationController
   # ゲストログイン情報、編集・削除無効
   def ensure_normal_customer
     if current_customer.email == 'guest@example.com'
-      redirect_to root_path, alert: 'ゲストユーザーの更新・削除はできません。'
+      redirect_to root_path, notice: 'ゲストユーザーの更新・退会はできません。'
     end
   end
 end

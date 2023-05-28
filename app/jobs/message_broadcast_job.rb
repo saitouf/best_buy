@@ -3,7 +3,6 @@ class MessageBroadcastJob < ApplicationJob
 
   # ブロードキャスト(一つのネットワークの中にあるすべてのホストに対してデータを送る。)
   def perform(message)
-    pp message
     ActionCable.server.broadcast "room_channel_#{message.group_id}", { message: render_message(message) }
   end
 

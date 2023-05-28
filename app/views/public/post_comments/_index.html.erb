@@ -5,14 +5,14 @@
     <tr>
       <td>
         <%= link_to customer_path(post_comment.customer) do %>
-          <%= image_tag post_comment.customer.get_profile_image, size: "100x100" %><br>
+          <%= image_tag post_comment.customer.get_profile_image, class: "rounded-circle", size: "100x100" %><br>
           <%= post_comment.customer.name %>
         <% end %>
       </td>
-      <td>
+      <td class= "pl-5">
         <%= post_comment.comment %>
       </td>
-      <td>
+      <td class= "pl-4">
         <% if post_comment.customer == current_customer %>
           <%= link_to "削除", post_item_post_comment_path(post_item, post_comment), method: :delete, remote: true, class: "btn btn-danger pull-right" %>
         <% end %>

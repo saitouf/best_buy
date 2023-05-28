@@ -3,7 +3,7 @@ class Admin::CustomersController < ApplicationController
   before_action :set_customer, only: [:favorites]
 
   def index
-    @customers = Customer.page(params[:page]).per(9)
+    @customers = Customer.page(params[:page]).per(10)
   end
 
   def show

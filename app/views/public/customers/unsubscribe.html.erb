@@ -4,14 +4,12 @@
       <h3>本当に退会しますか？</h3>
     </dev>
   </div>
-  
   <div class="row">
     <div class="col-12 text-center py-4">
       <h5>退会手続きをされますと、全てのサービスがご利用いただけなくなります。</h5>
        <h5>本当に退会してよろしいですか？</h5>
     </div>
   </div>
-  
   <div class="row offset-4">
     <div class="col-3"><%= link_to "退会しない", customer_path, class: "btn btn-primary" %></div>
     <div class="col-2"><%= link_to "退会する", withdrawal_path, method: :patch, data: {confirm: "本当に退会しますか？"}, class: "btn btn-danger" %></div>

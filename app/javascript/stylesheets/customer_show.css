@@ -2,6 +2,12 @@
   display: flex;
   flex-wrap: wrap
 }
+
 .dish_image{
   width: 25%
+}
+
+.table-cell-wrap {
+    word-wrap: break-word;
+    max-width: 20ch;
 }

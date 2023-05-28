@@ -1,18 +1,17 @@
 <div class="row justify-content-center mb-4">
-<%= image_tag customer.get_profile_image, size: '150x150', class: 'rounded-circle' %>
+  <%= image_tag customer.get_profile_image, size: '150x150', class: 'rounded-circle' %>
 </div>
 <table class='table mx-auto'>
   <tr class="align-middle text-center">
-	  <th class="table-cell-wrap"><%= customer.name %></th>
+    <th class="table-cell-wrap"><%= customer.name %></th>
   </tr>
   <tr class="align-middle text-center">
-	  <th class="table-cell-wrap"><%= customer.introduction %></th>
+    <th class="table-cell-wrap"><%= customer.introduction %></th>
   </tr>
   <tr class="align-middle text-center">
-	  <th><%= link_to "いいねした投稿", favorite_index_admin_customer_path(@customer), class:"text-dark" %></th>
+    <th><%= link_to "いいねした投稿", favorite_index_admin_customer_path(@customer), class:"text-dark" %></th>
   </tr>
 </table>
-
 <div>
   <% if current_customer == customer %>
     <%= link_to edit_customer_path(customer), class: "btn btn-outline-secondary btn-block" do %>

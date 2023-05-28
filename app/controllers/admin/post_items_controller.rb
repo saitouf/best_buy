@@ -1,6 +1,7 @@
 class Admin::PostItemsController < ApplicationController
   before_action :authenticate_admin!
-
+  
+   # 投稿、新しい・古い・コメント数多い・いいね数多い順に並び替え
   def index
     if params[:latest]
       @post_items = PostItem.latest.page(params[:page]).per(10)
@@ -33,7 +34,7 @@ class Admin::PostItemsController < ApplicationController
   def update
     @post_item = PostItem.find(params[:id])
     if @post_item.update(post_item_params)
-      redirect_to admin_post_item_path(@post_item), notice: "投稿編集が完了しました."
+      redirect_to admin_post_item_path(@post_item), notice: "投稿を編集しました。"
     else
       render "edit"
     end
@@ -42,7 +43,7 @@ class Admin::PostItemsController < ApplicationController
   def destroy
     @post_item = PostItem.find(params[:id])
     @post_item.destroy
-    redirect_to admin_post_items_path
+    redirect_to admin_post_items_path, notice: "投稿を削除しました。"
   end
   
   def search

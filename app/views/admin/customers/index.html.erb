@@ -34,10 +34,8 @@
         </tbody>
       </table>
     </div>
-    <div class="row">
-      <div class="col-12 d-flex justify-content-center">
-        <%= paginate @customers, previous_label: '&laquo; 前へ', next_label: '次へ &raquo;', class: 'pagination' %>
-      </div>
-    </div>
+  </div>
+  <div class="d-flex justify-content-center mt-3">
+    <%= paginate @customers %>
   </div>
 </div>

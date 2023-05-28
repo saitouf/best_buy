@@ -14,7 +14,7 @@ class Customer < ApplicationRecord
   has_many :messages, dependent: :destroy
 
   validates :name,presence:true
-  validates :introduction, length: { maximum: 100, message: "自己紹介は%{count}文字以内で入力してください" }
+  validates :introduction, length: { maximum: 100 }
 
   # プロフィール画像有無確認
   def get_profile_image
@@ -26,7 +26,7 @@ class Customer < ApplicationRecord
     super && (is_deleted == false)
   end
   
-  # 検索情報の取得
+  # 検索情報のキーワード取得
   def self.search(customer_keyword)
     where(["name like? OR email like?", "%#{customer_keyword}%", "%#{customer_keyword}%"])
   end

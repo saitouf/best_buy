@@ -2,7 +2,7 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
-      
+
   activerecord:
     errors:
       models:
@@ -30,7 +30,7 @@ ja:
             password:
               blank: "パスワードを入力してください"
             name:
-              blank: "名前を入力してください"
+              blank: "ユーザー名を入力してください"
             introduction:
               too_long: "自己紹介は%{count}文字以内で入力してください"
         group:
@@ -41,7 +41,7 @@ ja:
               blank: "グループ概要を入力してください"
               too_short: "グループ概要は%{count}文字以上で入力してください"
               too_long: "グループ概要は%{count}文字以下で入力してください"
-        
+
   errors:
     messages:
       not_saved: "保存できませんでした"

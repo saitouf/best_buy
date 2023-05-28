@@ -10,7 +10,7 @@
       <h1 class="card-title">Chat Room</h1>
       <% @messages.each do |message| %>
       <div class="mt-3" id="messages" data-room_id="<%= @group.id %>">
-        <%= "#{message.customer.name}:  #{message.content}" %>
+        <%= render 'public/messages/message', message: message %>
         <% end %>
       </div>
     </div>

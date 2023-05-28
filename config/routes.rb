@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   # Actioncableの有効
   mount ActionCable.server => '/cable'
 
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
         get "/customer/favorites" => "customers#favorites", as: "favorite_index"
       end
     end
-    resources :groups, only: [:index, :new, :create, :show, :edit, :update, :destroy] 
+    resources :groups, only: [:index, :new, :create, :show, :edit, :update, :destroy]
     # 退会確認画面
     get '/customers/:id/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     # 論理削除用のルーティング
@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :customers, only: [:index, :show, :edit, :update] do
-    # いいね投稿確認のルーティング
+    # いいねを付けた投稿確認のルーティング
       member do
         get "/customer/favorites" => "customers#favorites", as: "favorite_index"
       end
@@ -55,6 +55,7 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:destroy]
     end
     resources :groups, only: [:index, :show, :edit, :update, :destroy]
+     # ランキングのルーティング
     get '/rank' => 'ranks#rank', as: 'rank'
      # 検索機能のルーティング
     get '/search' => 'post_items#search', as: 'search'

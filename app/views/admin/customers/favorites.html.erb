@@ -5,7 +5,7 @@
 </div>
 <% @favorite_posts.each do |post_item| %>
   <div class="card mx-auto shadow-lg mb-4" style="width: 700px">
-  <%= link_to post_item_path(post_item) do %>
+  <%= link_to admin_post_item_path(post_item) do %>
     <%= image_tag post_item.get_image, class:"card-img-top"; %>
   <% end %>
     <div class="card-body">
@@ -19,8 +19,9 @@
           <p class="card-text">使用用途：<%= post_item.explanation %></p>
           <span><i class="fas fa-user"></i> <%= post_item.customer.name %> ｜ </span>
           <span><i class="far fa-comment"></i><%= post_item.post_comments.count %> ｜ </span>
-          <span><i class="fas fa-eye"></i><%= post_item.view_counts.count %></span>
-          <p>投稿日時：<%= l post_item.created_at %></p>
+          <span><i class="fas fa-eye"></i><%= post_item.view_counts.count %> | </span>
+          <span><i class="fas fa-heart"></i> <%= post_item.favorites.count %></span>
+          <p class="mt-3">投稿日時：<%= l post_item.created_at %></p>
         </div>
       </div>
     </div>

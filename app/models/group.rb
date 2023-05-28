@@ -13,6 +13,7 @@ class Group < ApplicationRecord
     owner_id == customer.id
   end
   
+  # グループ画像有無確認
   def get_image
     (image.attached?) ? image : 'no_image.jpg'
   end

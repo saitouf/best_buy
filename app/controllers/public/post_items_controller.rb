@@ -15,7 +15,8 @@ class Public::PostItemsController < ApplicationController
       render "new"
     end
   end
-
+  
+   # 投稿、新しい・古い・コメント数多い・いいね数多い順に並び替え
   def index
     if params[:latest]
       @post_items = PostItem.latest.page(params[:page]).per(10)

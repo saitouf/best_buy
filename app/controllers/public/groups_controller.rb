@@ -1,12 +1,9 @@
 class Public::GroupsController < ApplicationController
   before_action :authenticate_customer!
-  # before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
-  # before_action :set_group, only: [:edit, :update]
+  before_action :ensure_correct_customer, only: [:edit, :update, :destroy]
 
   def index
     @groups = Group.page(params[:page]).per(9)
-    @group_joining = GroupUser.where(customer_id: current_customer.id)
-    @groups_none = "どのグループにも参加していません。"
   end
 
   def new
@@ -48,7 +45,7 @@ class Public::GroupsController < ApplicationController
       redirect_to groups_path, notice: 'グループを削除しました。'
     end
   end
-  
+
   def search
     @groups = Group.search(params[:group_keyword]).page(params[:page]).per(10)
     @group_keyword = params[:group_keyword]
@@ -60,15 +57,12 @@ class Public::GroupsController < ApplicationController
   def group_params
     params.require(:group).permit(:name, :introduction, :image)
   end
-  
-  # def ensure_correct_customer
-  #   @group = Group.find(params[:id])
-  #   unless @group.customer == current_customer
-  #   redirect_to post_items_path
-  #   end
-  # end
 
-  # def set_group
-  #   @group = Group.find(params[:id])
-  # end
+  def ensure_correct_customer
+    @group = Group.find(params[:id])
+    unless @group.owner_id == current_customer.id
+      redirect_to groups_path
+    end
+  end
+
 end
