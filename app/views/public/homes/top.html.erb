@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-10 mt-5">
+    <div class="col-md-12 mt-5">
       <div style="position: relative;">
-        <img src="/assets/top_image.jpg" style="width: 1000px; height: 600px;">
+        <%= image_tag "top_image.jpg", size: '1000x600', class: "main-visual-image img-fluid" %>
         <div class="text-center" style="position: absolute; bottom: 0; left: 0; right: 0; background-color: rgba(255, 255, 255, 0.7); padding: 20px; width: 1000px;">
           <p style="font-size: 18px">
             ようこそ、BestBuyへ！<br>
@@ -17,7 +17,7 @@
     </div>
   </div>
   <div class="col-md-7 offset-md-4 my-5">
-    <h3>ランキングトップ３</h3>
+    <h3>人気商品ランキングトップ３</h3>
   </div>
     <div class="row">
       <% @post_favorite_ranks.first(3).each.with_index(1) do |post, i| %>
