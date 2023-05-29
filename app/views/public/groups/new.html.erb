@@ -10,11 +10,11 @@
         </div>
         <div class="form-group">
           <%= f.label :グループ名, class: "h4" %>
-          <%= f.text_field :name, class: "form-control mb-4", style: "width: 500px;" %>
+          <%= f.text_field :name, placeholder:"BestBuy", class: "form-control mb-4", style: "width: 500px;" %>
         </div>
         <div class="form-group">
           <%= f.label :グループ概要, class: "h4" %>
-          <%= f.text_area :introduction, class: "form-control mb-5" %>
+          <%= f.text_area :introduction, placeholder:"グループの内容などを入力してください", class: "form-control mb-5" %>
         </div>
         <div class="form-group">
           <%= f.submit "グループを作成する", class: 'btn btn-primary', style: "width: 200px;" %>
