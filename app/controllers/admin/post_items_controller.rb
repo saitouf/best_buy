@@ -1,6 +1,6 @@
 class Admin::PostItemsController < ApplicationController
   before_action :authenticate_admin!
-  
+
    # 投稿、新しい・古い・コメント数多い・いいね数多い順に並び替え
   def index
     if params[:latest]
@@ -43,9 +43,9 @@ class Admin::PostItemsController < ApplicationController
   def destroy
     @post_item = PostItem.find(params[:id])
     @post_item.destroy
-    redirect_to admin_post_items_path, notice: "投稿を削除しました。"
+    redirect_to admin_customer_path(@post_item.customer), notice: "投稿を削除しました。"
   end
-  
+
   def search
     @post_items = PostItem.search(params[:keyword]).page(params[:page]).per(10)
     @keyword = params[:keyword]

@@ -9,7 +9,7 @@ ja:
         post_item:
           attributes:
             tag_ids:
-              blank: "タグを選択してください"
+              blank: "ジャンルを選択してください"
             name:
               blank: "商品名を入力してください"
             price:
