@@ -14,6 +14,7 @@ import "../stylesheets/application"
 import "../stylesheets/customer_show"
 import "../stylesheets/post_item_show"
 import '@fortawesome/fontawesome-free/js/all'
+import "./countLength"
 
 Rails.start()
 Turbolinks.start()

@@ -19,7 +19,6 @@ ja:
               too_long: "使用用途は%{count}文字以下で入力してください"
             thoughts:
               blank: "使用してみた感想を入力してください"
-              too_long: "感想は%{count}文字以下で入力してください"
             recommend_point:
               blank: "おすすめポイントを入力してください"
               too_long: "おすすめポイントは%{count}文字以下で入力してください"

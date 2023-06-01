@@ -19,8 +19,8 @@ class PostItem < ApplicationRecord
   validates :name, presence: true 
   validates :price, presence: true
   validates :tag_ids, presence: true
+  validates :thoughts, presence: true
   validates :explanation, presence: true, length: {maximum:300}
-  validates :thoughts, presence: true, length: {maximum:300}
   validates :recommend_point, presence: true, length: {maximum:300}
   
   
