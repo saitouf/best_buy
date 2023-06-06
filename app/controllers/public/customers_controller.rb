@@ -34,7 +34,7 @@ class Public::CustomersController < ApplicationController
 
   def favorites
     favorites = Favorite.where(customer_id: @customer.id).pluck(:post_item_id)
-    @favorite_posts = PostItem.where(id: favorites)
+    @post_items = PostItem.where(id: favorites)
   end
 
   private

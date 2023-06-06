@@ -14,6 +14,7 @@ ja:
               blank: "商品名を入力してください"
             price:
               blank: "商品価格を入力してください"
+              not_a_number: "商品価格は数値で入力してください"
             explanation:
               blank: "使用用途を入力してください"
               too_long: "使用用途は%{count}文字以下で入力してください"

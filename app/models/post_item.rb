@@ -17,7 +17,7 @@ class PostItem < ApplicationRecord
   scope :old, -> {order(created_at: :asc)}
   
   validates :name, presence: true 
-  validates :price, presence: true
+  validates :price, presence: true, numericality: true
   validates :tag_ids, presence: true
   validates :thoughts, presence: true
   validates :explanation, presence: true, length: {maximum:300}
