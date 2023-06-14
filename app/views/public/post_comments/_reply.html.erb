@@ -1,0 +1,7 @@
+<%= link_to customer_path(reply.customer) do %>
+  <%=image_tag  @post_item.customer.get_profile_image, class: "rounded-circle", size: "100x100" %><br>
+  <%= reply.customer.name %>
+<% end %>
+<%= reply.comment %>
+<p><%= reply.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+

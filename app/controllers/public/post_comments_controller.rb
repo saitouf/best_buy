@@ -8,6 +8,11 @@ class Public::PostCommentsController < ApplicationController
     comment.save
     @post_comment = PostComment.new
     @post_item = PostItem.find(params[:post_item_id])
+    
+    respond_to do |format|
+    format.html { redirect_to post_item } # HTMLフォーマットの場合は適切なリダイレクト先に変更する
+    format.js # JavaScript形式で応答する
+  end
   end
 
   def destroy
@@ -16,10 +21,15 @@ class Public::PostCommentsController < ApplicationController
     @post_comment.destroy
     @post_comment = PostComment.new
   end
+  
+  def new
+    @post_item = PostItem.find(params[:post_item_id])
+    @post_comment = @post_item.post_comments.new(parent_id: params[:parent_id])
+  end
 
   private
 
   def post_comment_params
-    params.require(:post_comment).permit(:comment)
+    params.require(:post_comment).permit(:comment, :parent_id)
   end
 end
