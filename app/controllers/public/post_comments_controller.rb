@@ -2,15 +2,14 @@ class Public::PostCommentsController < ApplicationController
   before_action :authenticate_customer!
 
   def create
-    post_item = PostItem.find(params[:post_item_id])
+    @post_item = PostItem.find(params[:post_item_id])
     comment = current_customer.post_comments.new(post_comment_params)
-    comment.post_item_id = post_item.id
+    comment.post_item_id = @post_item.id
     comment.save
     @post_comment = PostComment.new
-    @post_item = PostItem.find(params[:post_item_id])
     
     respond_to do |format|
-    format.html { redirect_to post_item } # HTMLフォーマットの場合は適切なリダイレクト先に変更する
+    format.html { redirect_to @post_item } # HTMLフォーマットの場合は適切なリダイレクト先に変更する
     format.js # JavaScript形式で応答する
   end
   end

@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-md-8 offset-md-1 my-3" style="font-size: 24px;">
       <%= link_to customer_path(@post_item.customer), class:"text-dark" do %>
-      <%= image_tag @post_item.customer.get_profile_image, size: '70x70', class: 'rounded-circle' %>
-      <%= @post_item.customer.name %>
+        <%= image_tag @post_item.customer.get_profile_image, size: '70x70', class: 'rounded-circle' %>
+        <%= @post_item.customer.name %>
       <% end %>
     </div>
   </div>
