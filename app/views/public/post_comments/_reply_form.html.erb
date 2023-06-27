@@ -1,8 +1,7 @@
 <%= form_with(model: [@post_item, @post_comment]) do |f| %>
   <%= f.hidden_field :parent_id %>
   <div class="form-group">
-    <%= f.label '返信' %>
-    <%= f.text_area :comment, class: 'form-control', placeholder: "返信をここに" %>
+    <%= f.text_area :comment, class: 'form-control', style: 'width: 350px;', placeholder: "返信をここに入力してください" %>
   </div>
   <%= f.submit '送信', class: 'btn btn-primary rounded-pill' %>
   <%= link_to 'キャンセル', post_item_path(@post_item), class: 'btn btn-secondary rounded-pill' %>

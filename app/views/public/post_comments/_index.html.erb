@@ -14,26 +14,24 @@
         <%= post_comment.comment %>
       </td>
       <td class= "pl-4">
-        <% if customer_signed_in? %>
-          <%= link_to '返信', new_post_item_post_comment_path(post_item, parent_id: post_comment.id), remote: true %>
-        <% end %>
+        <%= link_to '返信', new_post_item_post_comment_path(post_item, parent_id: post_comment.id), remote: true %>
         <% if post_comment.customer == current_customer %>
           <%= link_to "削除", post_item_post_comment_path(post_item, post_comment), method: :delete, remote: true, class: "btn btn-danger pull-right" %>
         <% end %>
       </td>
     </tr>
-   
     <% if post_comment.replies.any? %>
-    <% post_comment.replies.each do |reply| %>
-    <tr>
-      <td><%= render partial: 'public/post_comments/reply', locals: { reply: reply } %></td>
-    </tr>
+      <% post_comment.replies.each do |reply| %>
+      <tr>
+        <td><%= render 'public/post_comments/reply', reply: reply, post_item: post_item %></td>
+        <!--%= render partial: 'public/post_comments/reply', locals: { reply: reply } %>-->
+      </tr>
+      <% end %>
     <% end %>
-  <% end %>
-  <tr>
-  <td><div id="reply-form-<%= post_comment.id %>"></div></td>
-  </tr>
-    <% end %>
+      <tr>
+        <td><div id="reply-form-<%= post_comment.id %>"></div></td>
+      </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
