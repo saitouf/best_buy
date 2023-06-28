@@ -19,3 +19,4 @@ import "./countLength"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+

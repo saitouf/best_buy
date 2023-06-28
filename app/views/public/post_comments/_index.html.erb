@@ -24,7 +24,6 @@
       <% post_comment.replies.each do |reply| %>
       <tr>
         <td><%= render 'public/post_comments/reply', reply: reply, post_item: post_item %></td>
-        <!--%= render partial: 'public/post_comments/reply', locals: { reply: reply } %>-->
       </tr>
       <% end %>
     <% end %>

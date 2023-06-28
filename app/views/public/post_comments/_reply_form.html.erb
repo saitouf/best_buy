@@ -1,4 +1,4 @@
-<%= form_with(model: [@post_item, @post_comment]) do |f| %>
+<%= form_with(model: [@post_item, @post_comment], method: :post, local: false) do |f| %>
   <%= f.hidden_field :parent_id %>
   <div class="form-group">
     <%= f.text_area :comment, class: 'form-control', style: 'width: 350px;', placeholder: "返信をここに入力してください" %>

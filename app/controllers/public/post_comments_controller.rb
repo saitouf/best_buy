@@ -7,11 +7,6 @@ class Public::PostCommentsController < ApplicationController
     comment.post_item_id = @post_item.id
     comment.save
     @post_comment = PostComment.new
-    
-    respond_to do |format|
-    format.html { redirect_to @post_item } # HTMLフォーマットの場合は適切なリダイレクト先に変更する
-    format.js # JavaScript形式で応答する
-  end
   end
 
   def destroy
