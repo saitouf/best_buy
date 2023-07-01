@@ -1,4 +1,3 @@
-<div class=" col-md-12 offset-md-2">
 <table>
   <tr>
     <td>
@@ -12,10 +11,9 @@
     </td>
     <td>
       <% if reply.customer == current_customer %>
-        <%= link_to "削除", post_item_post_comment_path(post_item, reply.id), method: :delete, remote: true, class: "btn btn-danger pull-right" %>
+        <%= link_to "削除", post_item_post_comment_path(post_item, reply.id), method: :delete, remote: true, class: "btn btn-danger pull-right", style: "width: 70px;" %>
       <% end %>
     </td>
   </tr>
 </table>
-</div>
 
