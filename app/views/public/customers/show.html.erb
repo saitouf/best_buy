@@ -10,7 +10,7 @@
         <div class="dish_image text-center mx-4">
           <div class="img">
             <%= link_to post_item_path(post_item.id), class:"text-dark" do %>
-            <%= image_tag post_item.get_image, size: "200x200" %></div>
+            <%= image_tag post_item.get_image, size: "200x200", style: "object-fit: cover;" %></div>
               <% if post_item.name.length > 26 %>
                 <%=  post_item.name[0..25] + '...' %>
               <% else %>

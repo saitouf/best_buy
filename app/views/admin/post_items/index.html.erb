@@ -21,7 +21,7 @@
 <% @post_items.each do |post_item| %>
   <div class="card mx-auto shadow-lg my-4" style="width: 700px">
   <%= link_to admin_post_item_path(post_item.id) do %>
-    <%= image_tag post_item.get_image, class:"card-img-top", size: "600x650" %>
+    <%= image_tag post_item.get_image, class:"card-img-top", size: "600x650", style: "object-fit: cover;" %>
   <% end %>
     <div class="card-body">
       <div class="row">

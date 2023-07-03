@@ -15,7 +15,7 @@
       <% @groups.each do |list| %>
         <div class="card my-5" style="width: 330px; height: 510px;">
           <%= link_to "/groups/#{list.id}", class: "text-decoration-none",data: {"turbolinks"=>false} do %>
-            <%= image_tag list.get_image, size: '200x300', class: "card-img-top" %>
+            <%= image_tag list.get_image, size: '200x300', class: "card-img-top", style: "object-fit: cover;" %>
             <div class="card-body" style="height: 150px;">
               <h5 class="card-title text-dark"><%= list.name %></h5>
               <p class="card-text text-dark">
