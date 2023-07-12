@@ -10,14 +10,22 @@
     </div>
   </div>
   <div class="row">
+  <% last_like = 0 %>
+  <% j = 1 %>
     <% @post_favorite_ranks.first(10).each.with_index(1) do |post, i| %>
+      <% if i == 1 %>
+        <% last_like = post.favorites.count %>
+      <% end %>
+      <% if post.favorites.count != last_like %>
+        <% j = i %>
+      <% end %>
       <div class="col-md-4 mb-4">
         <div class="card" style="width: 350px; height: 550px;">
           <%= link_to post_item_path(post.id) do %>
             <%= image_tag post.get_image, class: "card-img-top", size: "300x350", style: "object-fit: cover;" %>
-           <% end %>
+          <% end %>
           <div class="card-body">
-            <h5 class="card-title">第<%= i %>位</h5>
+            <h5 class="card-title">第<%= j %>位</h5>
             <%= link_to post_item_path(post.id) do %>
               <% if post.name.length > 65 %>
                 <h6 class="mb-2 text-dark"><%= post.name[0..64] + '...' %></h6>
@@ -37,6 +45,7 @@
           </div>
         </div>
       </div>
+      <% last_like = post.favorites.count %>
     <% end %>
   </div>
 </div>
